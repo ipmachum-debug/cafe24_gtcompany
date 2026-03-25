@@ -359,12 +359,6 @@
   border: none !important;
 }
 
-/* colgroup에서 썸네일 열 너비 제거 */
-.boardMain .ec-base-table col:first-child,
-.board-main .ec-base-table col:first-child {
-  width: 0 !important;
-}
-
 /* 메인(index.html) 요약 리스트 앞 회색 네모 제거 */
 .boardMain .ec-base-table.typeList td.title::before,
 .board-main .ec-base-table.typeList td.title::before {
