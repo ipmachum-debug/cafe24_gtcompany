@@ -1,6 +1,7 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@css(/layout/basic/css/board_layout.css)-->
 <!--@css(/css/module/board/index.css)-->
+<!--@js(/layout/basic/js/board_sidebar.js)-->
 
 <style>
 /* 게시판 구분선 */
@@ -13,43 +14,6 @@
 .boardMain:last-child {
   border-bottom: none;
   margin-bottom: 0;
-}
-
-/* 왼쪽 메뉴 스타일 통일 */
-.board-sidebar-menu li a {
-  color: #333 !important;
-  background: #fff !important;
-  border-left: 3px solid transparent !important;
-}
-
-.board-sidebar-menu li a:hover {
-  background: #f9f9f9 !important;
-  color: #ff6b00 !important;
-}
-
-/* 게시판 메인 링크 스타일 */
-.board-sidebar-menu li.cs-main a {
-  font-weight: 700;
-  color: #ff6b00 !important;
-  background: #fff9f5 !important;
-  border-left: 3px solid #ff6b00 !important;
-}
-
-/* 고객센터 메인 – 리스트 앞 회색 박스(썸네일/의도된 사각형) 제거 */
-.boardMain .ec-base-table.typeList td.title::before {
-  display: none !important;
-  content: none !important;
-}
-
-.boardMain .ec-base-table.typeList td.title .thumbnail,
-.boardMain .ec-base-table.typeList td.title .thumb,
-.boardMain .ec-base-table.typeList td.title .imgArea {
-  display: none !important;
-}
-
-/* 제목 왼쪽 여백도 제거 */
-.boardMain .ec-base-table.typeList td.title {
-  padding-left: 0 !important;
 }
 </style>
 
