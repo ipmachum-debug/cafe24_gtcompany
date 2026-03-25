@@ -345,89 +345,60 @@
 }
 
 /* =========================
-   고객센터 게시판 회색 썸네일 박스 제거
+   고객센터 메인 페이지 회색 썸네일 박스 제거
+   (개별 게시판 리스트 페이지에는 영향 없음)
    ========================= */
 
-/* 카페24 모듈이 자동 삽입하는 td.thumb 컬럼 자체를 숨김 */
-.boardMain .ec-base-table td.thumb,
-.board-main .ec-base-table td.thumb,
-.board-container .ec-base-table td.thumb,
-[class*="xans-board"] td.thumb {
+/* 고객센터 메인(index.html) - 썸네일 td 숨김 */
+.boardMain .ec-base-table td.thumb {
   display: none !important;
   width: 0 !important;
   padding: 0 !important;
   border: none !important;
 }
 
-/* 메인(index.html) 요약 리스트 앞 회색 네모 제거 */
-.boardMain .ec-base-table.typeList td.title::before,
-.board-main .ec-base-table.typeList td.title::before {
+/* 고객센터 메인 - 리스트 앞 회색 네모(::before) 제거 */
+.boardMain .ec-base-table.typeList td.title::before {
   content: none !important;
   display: none !important;
 }
 
-.boardMain .ec-base-table.typeList td.title .thumbnail,
-.boardMain .ec-base-table.typeList td.title .thumb,
-.boardMain .ec-base-table.typeList td.title .imgArea,
-.boardMain .ec-base-table.typeList td.title .ec-board-thumbnail,
-.board-main .ec-base-table.typeList td.title .thumbnail,
-.board-main .ec-base-table.typeList td.title .thumb,
-.board-main .ec-base-table.typeList td.title .imgArea,
-.board-main .ec-base-table.typeList td.title .ec-board-thumbnail {
+/* 고객센터 메인 - 셀 안의 썸네일 요소 제거 */
+.boardMain .ec-base-table td.title .thumbnail,
+.boardMain .ec-base-table td.title .thumb,
+.boardMain .ec-base-table td.title .imgArea,
+.boardMain .ec-base-table td.title .ec-board-thumbnail,
+.boardMain .ec-base-table td.subject .thumbnail,
+.boardMain .ec-base-table td.subject .thumb,
+.boardMain .ec-base-table td.subject .imgArea,
+.boardMain .ec-base-table td.subject .ec-board-thumbnail {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
   background: none !important;
 }
 
-/* xans 모듈 기반 썸네일 제거 */
-[class*="xans-board"] li a span:first-child:not(.subject):not(.title),
-[class*="xans-board"] li a .thumbnail,
-[class*="xans-board"] li a .thumb,
-[class*="xans-board"] li a .imgArea,
-[class*="xans-board"] td.subject .thumbnail,
-[class*="xans-board"] td.subject .thumb,
-[class*="xans-board"] td.subject .imgArea,
-[class*="xans-board"] td.subject .ec-board-thumbnail {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: none !important;
-}
-
-/* 체크박스 열도 고객센터에서는 숨김 */
-.boardMain .ec-base-table td.chk,
-.board-main .ec-base-table td.chk,
-.board-container .ec-base-table td.chk {
+/* 고객센터 메인 - 체크박스 열 숨김 */
+.boardMain .ec-base-table td.chk {
   display: none !important;
   width: 0 !important;
   padding: 0 !important;
 }
 
-/* 썸네일 자리가 없어지면서 남는 왼쪽 여백 제거 */
+/* 고객센터 메인 - 왼쪽 여백 제거 */
 .boardMain .ec-base-table.typeList td.title,
-.boardMain .ec-base-table.typeList td.subject,
-.board-main .ec-base-table.typeList td.title,
-.board-main .ec-base-table.typeList td.subject,
-[class*="xans-board"] li a,
-[class*="xans-board"] li .subject,
-[class*="xans-board"] td.subject,
-[class*="xans-board"] td.subject.left,
-[class*="xans-board"] td.subject.txtBreak {
+.boardMain .ec-base-table.typeList td.subject {
   padding-left: 0 !important;
 }
 
-/* 테이블 보더 제거 */
-.boardMain .ec-base-table table,
-.board-main .ec-base-table table {
+/* 고객센터 메인 - 테이블 보더 제거 */
+.boardMain .ec-base-table table {
   border-collapse: collapse;
   border: none !important;
 }
 
 .boardMain .ec-base-table table td,
-.boardMain .ec-base-table table th,
-.board-main .ec-base-table table td,
-.board-main .ec-base-table table th {
+.boardMain .ec-base-table table th {
   border-left: none !important;
   border-right: none !important;
 }
