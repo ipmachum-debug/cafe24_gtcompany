@@ -1,0 +1,400 @@
+/* 게시판 공통 레이아웃 스타일 */
+
+/* 게시판 전체 컨테이너 */
+.board-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* 좌측 사이드바 */
+.board-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.board-sidebar-inner {
+  position: sticky;
+  top: 200px;          /* 헤더에서 더 떨어지도록 조정 */
+  margin-top: 180px;   /* 고객센터 메인 공지사항 영역 높이까지 내려줌 */
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.board-sidebar-title {
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+  color: #fff;
+  padding: 20px;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+.board-sidebar-menu {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.board-sidebar-menu li {
+  border-bottom: none;
+}
+
+.board-sidebar-menu a {
+  display: block;
+  padding: 14px 20px;
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.board-sidebar-menu a:hover {
+  background: #f8f8f8;
+  color: #222;
+}
+
+.board-sidebar-menu a.active {
+  background: #fff8f0;
+  color: #ff8c00;
+  font-weight: 600;
+  border-left: 3px solid #ff8c00;
+}
+
+.board-sidebar-menu a.active::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ff8c00;
+  border-radius: 50%;
+}
+
+/* 중앙 게시판 영역 */
+.board-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 우측 정보 영역 */
+.board-aside {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.board-aside-inner {
+  position: sticky;
+  top: 200px;          /* 헤더에서 더 떨어지도록 조정 */
+  margin-top: 180px;   /* 고객센터 메인 공지사항 영역 높이까지 내려줌 */
+}
+
+/* 고객센터 정보 박스 */
+.cs-info-box {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.cs-info-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.cs-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.cs-info-item .label {
+  font-weight: 600;
+  color: #666;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.cs-info-item .value {
+  color: #333;
+  line-height: 1.6;
+}
+
+.cs-info-notice {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* 퀵 링크 박스 */
+.quick-links-box {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.quick-links-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.quick-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links-list li {
+  margin-bottom: 10px;
+}
+
+.quick-links-list a {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  color: #666;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.quick-links-list a:hover {
+  background: #ff8c00;
+  color: #fff;
+}
+
+.quick-links-list a::before {
+  content: '→';
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+/* 프랜차이즈 배너 */
+.franchise-banner {
+  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.franchise-banner h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.franchise-banner p {
+  font-size: 13px;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.franchise-banner .btn {
+  display: inline-block;
+  background: #fff;
+  color: #ff8c00;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.franchise-banner .btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* 모바일 고객센터 박스 (간단한 탭 형태) */
+.mobile-cs-tabs {
+  display: none;
+}
+
+/* 모바일 반응형 */
+@media screen and (max-width: 1024px) {
+  .board-container {
+    flex-direction: column;
+  }
+
+  .board-sidebar,
+  .board-aside {
+    width: 100%;
+  }
+
+  .board-sidebar-inner,
+  .board-aside-inner {
+    position: static;
+    margin-top: 0; /* 모바일에서는 기본 위치 유지 */
+  }
+
+  .board-sidebar {
+    order: -1;
+    display: none;
+  }
+
+  .board-aside {
+    order: 1;
+  }
+
+  .board-main {
+    order: 0;
+  }
+
+  /* 모바일에서 고급스러운 고객센터 탭 표시 */
+  .mobile-cs-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 0;
+    background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .mobile-cs-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-cs-tabs a {
+    flex-shrink: 0;
+    padding: 11px 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px;
+    color: #555;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    letter-spacing: -0.2px;
+  }
+
+  .mobile-cs-tabs a.active {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: #fff;
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-cs-tabs a:hover {
+    background: #f8f8f8;
+    border-color: #d0d0d0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-cs-tabs a.active:hover {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    transform: translateY(-1px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .board-container {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .board-sidebar-menu a {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .cs-info-box {
+    padding: 20px;
+  }
+
+  .cs-info-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cs-info-item .label {
+    min-width: auto;
+  }
+}
+
+/* 고객센터 메인 – 공지/후기/FAQ/프랜차이즈 목록 앞 회색 박스 제거 */
+.board-main .xans-board-main-1001 li a span:first-child,
+.board-main .xans-board-main-1001 li a .thumbnail,
+.board-main .xans-board-main-1001 li a .thumb,
+.board-main .xans-board-main-1001 li a .imgArea {
+  display: none !important;
+  background: none !important;
+}
+
+/* 썸네일 자리 때문에 밀려 있던 텍스트를 왼쪽으로 붙이기 */
+.board-main .xans-board-main-1001 li a,
+.board-main .xans-board-main-1001 li .subject {
+  padding-left: 0 !important;
+}
+
+/* 고객센터 메인 – 공지/후기/FAQ/프랜차이즈 목록 앞 회색 박스 완전 제거 */
+[class^="xans-board-main-"] li a span:first-child,
+[class^="xans-board-main-"] li a .thumbnail,
+[class^="xans-board-main-"] li a .thumb,
+[class^="xans-board-main-"] li a .imgArea {
+  display: none !important;
+  background: none !important;
+}
+
+/* 썸네일 자리 때문에 밀려 있던 텍스트를 왼쪽으로 붙이기 */
+[class^="xans-board-main-"] li a,
+[class^="xans-board-main-"] li .subject {
+  padding-left: 0 !important;
+}
+
+/* =========================
+   고객센터 게시판 회색 썸네일 박스 제거 (skin4)
+   ========================= */
+
+/* 메인(index.html) 요약 리스트 앞 네모 제거 */
+.boardMain .ec-base-table.typeList td.title::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 각 게시판(list.html) 목록에서 썸네일/회색 네모 제거 */
+[class^="xans-board-list"] td.subject .thumbnail,
+[class^="xans-board-list"] td.subject .thumb,
+[class^="xans-board-list"] td.subject .imgArea,
+[class^="xans-board-list"] td.subject .ec-board-thumbnail {
+  display: none !important;
+  background: none !important;
+}
+
+/* 썸네일 자리가 없어지면서 남는 왼쪽 여백 제거 */
+[class^="xans-board-list"] td.subject,
+[class^="xans-board-list"] td.subject.left,
+[class^="xans-board-list"] td.subject.txtBreak {
+  padding-left: 0 !important;
+}

@@ -1,0 +1,240 @@
+/* 고객센터 메인 페이지 스타일 */
+
+/* 게시판 탭 메뉴 */
+.board-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 50px;
+  background: #fff;
+}
+
+.board-tabs .tab-item {
+  position: relative;
+  padding: 18px 36px;
+  background: transparent;
+  border: none;
+  color: #999;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+  letter-spacing: -0.3px;
+}
+
+.board-tabs .tab-item:hover {
+  color: #333;
+  background: #fafafa;
+}
+
+.board-tabs .tab-item.active {
+  color: #333;
+  font-weight: 600;
+}
+
+.board-tabs .tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #333;
+}
+
+.customer-center-main {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+/* 1. 상단 퀵메뉴 */
+.quick-menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.quick-menu .menu-item {
+    display: block;
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.quick-menu .menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.quick-menu .menu-item .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.quick-menu .menu-item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.quick-menu .menu-item p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* 2. 프랜차이즈 안내 */
+.franchise-section {
+    display: flex;
+    align-items: center;
+    background: #fff8f0;
+    border-radius: 24px;
+    padding: 60px;
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+.franchise-section .franchise-text {
+    flex: 1;
+}
+
+.franchise-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.franchise-section p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.franchise-section .btn-franchise {
+    display: inline-block;
+    background: #ff8c00;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.franchise-section .btn-franchise:hover {
+    background: #e67e00;
+}
+
+.franchise-section .franchise-image {
+    flex: 1;
+    text-align: right;
+}
+
+.franchise-section .franchise-image img {
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+/* 3. 고객센터 정보 */
+.cs-info-section {
+    background: #f5f5f5;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.cs-info-box h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.cs-info-box .info-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.cs-info-box .info-item .label {
+    font-weight: 600;
+    color: #333;
+    width: 100px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.cs-info-box .info-item .value {
+    color: #666;
+}
+
+.cs-info-box .notice {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    margin-top: 24px;
+}
+
+/* 모바일 반응형 */
+@media screen and (max-width: 767px) {
+    .board-tabs {
+        overflow-x: auto;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 0;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+    
+    .board-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .board-tabs .tab-item {
+        flex-shrink: 0;
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+
+    .quick-menu {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+
+    .franchise-section {
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .franchise-section .franchise-text {
+        margin-bottom: 30px;
+    }
+
+    .franchise-section h2 {
+        font-size: 24px;
+    }
+
+    .cs-info-box .info-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .cs-info-box .info-item .label {
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+}

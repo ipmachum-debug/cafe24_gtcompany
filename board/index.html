@@ -1,0 +1,331 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/layout/basic/css/board_layout.css)-->
+<!--@css(/css/module/board/index.css)-->
+
+<style>
+/* 게시판 구분선 */
+.boardMain {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.boardMain:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* 왼쪽 메뉴 스타일 통일 */
+.board-sidebar-menu li a {
+  color: #333 !important;
+  background: #fff !important;
+  border-left: 3px solid transparent !important;
+}
+
+.board-sidebar-menu li a:hover {
+  background: #f9f9f9 !important;
+  color: #ff6b00 !important;
+}
+
+/* 게시판 메인 링크 스타일 */
+.board-sidebar-menu li.cs-main a {
+  font-weight: 700;
+  color: #ff6b00 !important;
+  background: #fff9f5 !important;
+  border-left: 3px solid #ff6b00 !important;
+}
+
+/* 고객센터 메인 – 리스트 앞 회색 박스(썸네일/의도된 사각형) 제거 */
+.boardMain .ec-base-table.typeList td.title::before {
+  display: none !important;
+  content: none !important;
+}
+
+.boardMain .ec-base-table.typeList td.title .thumbnail,
+.boardMain .ec-base-table.typeList td.title .thumb,
+.boardMain .ec-base-table.typeList td.title .imgArea {
+  display: none !important;
+}
+
+/* 제목 왼쪽 여백도 제거 */
+.boardMain .ec-base-table.typeList td.title {
+  padding-left: 0 !important;
+}
+</style>
+
+<!-- 모바일 고객센터 탭 메뉴 -->
+<div class="mobile-cs-tabs">
+  <a href="/board/index.html" class="cs-link-main">고객센터 메인</a>
+  <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=1&is_pcver=T" class="cs-link-notice">공지사항</a>
+  <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=4&is_pcver=T" class="cs-link-review">사용후기</a>
+  <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=6&is_pcver=T" class="cs-link-qna">상품 Q&A</a>
+  <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=3&is_pcver=T" class="cs-link-faq">FAQ</a>
+  <a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T" class="cs-link-franchise">프랜차이즈</a>
+</div>
+
+<div class="board-container">
+  
+  <!-- 좌측 사이드바 -->
+  <aside class="board-sidebar">
+    <div class="board-sidebar-inner">
+      <div class="board-sidebar-title">고객센터</div>
+      <ul class="board-sidebar-menu">
+        <li class="cs-main"><a href="/board/index.html" class="cs-link-main">고객센터 메인</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=1&is_pcver=T" class="cs-link-notice">공지사항</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=4&is_pcver=T" class="cs-link-review">상품 사용후기</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=6&is_pcver=T" class="cs-link-qna">상품 Q&A</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=3&is_pcver=T" class="cs-link-faq">이용안내 FAQ</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T" class="cs-link-franchise">프랜차이즈 상담</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 중앙 게시판 영역 -->
+  <main class="board-main">
+    <div class="path">
+        <span>현재 위치</span>
+        <ol>
+            <li><a href="/">홈</a></li>
+            <li title="현재 위치"><strong>고객센터</strong></li>
+        </ol>
+    </div>
+
+    <div class="titleArea">
+        <h2>고객센터</h2>
+        <p>미미스상회 고객센터입니다. 궁금하신 사항을 확인해보세요.</p>
+    </div>
+
+    <!-- 공지사항 -->
+    <div class="boardMain">
+        <div class="board" module="board_listpackage_1">
+            <h3 module="board_title_1">
+                <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=1&is_pcver=T">공지사항</a>
+            </h3>
+            <div class="ec-base-table typeList gLine">
+                <table border="1">
+                <caption>공지사항 목록</caption>
+                <colgroup>
+                    <col style="width:auto;" />
+                    <col style="width:120px;" />
+                </colgroup>
+                <thead module="board_listheader_1" class="blind">
+                    <tr>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성일</th>
+                    </tr>
+                </thead>
+                <tbody module="board_list_1">
+                    <!--
+                        $count = 5
+                        $main_list = yes
+                        $subject_cut = 40
+                        $main_list_reply_view = no
+                     -->
+                    <tr class="{$block_target_class}" {$block_data_attr}>
+                        <td class="title"><a href="{$link_board_detail}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                        <td class="right {$date_display|display}">{$write_date}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=1&is_pcver=T" class="btnLink">더보기</a>
+        </div>
+    </div>
+
+    <!-- 상품 사용후기 & 상품 Q&A -->
+    <div class="boardMain">
+        <div class="leftArea">
+            <div class="board" module="board_listpackage_4">
+                <h3 module="board_title_4">
+                    <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=4&is_pcver=T">상품 사용후기</a>
+                </h3>
+                <div class="ec-base-table typeList gLine">
+                    <table border="1">
+                    <caption>상품 사용후기 목록</caption>
+                    <colgroup>
+                        <col style="width:auto;" />
+                        <col style="width:100px;" />
+                    </colgroup>
+                    <thead module="board_listheader_4" class="blind">
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody module="board_list_4">
+                        <!--
+                            $count = 5
+                            $main_list = yes
+                            $subject_cut = 30
+                            $main_list_reply_view = no
+                         -->
+                        <tr class="{$block_target_class}" {$block_data_attr}>
+                            <td class="title"><a href="{$link_board_detail}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                            <td class="right {$date_display|display}">{$write_date}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=4&is_pcver=T" class="btnLink">더보기</a>
+            </div>
+        </div>
+
+        <div class="rightArea">
+            <div class="board" module="board_listpackage_6">
+                <h3 module="board_title_6">
+                    <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=6&is_pcver=T">상품 Q&A</a>
+                </h3>
+                <div class="ec-base-table typeList gLine">
+                    <table border="1">
+                    <caption>상품 Q&A 목록</caption>
+                    <colgroup>
+                        <col style="width:auto;" />
+                        <col style="width:100px;" />
+                    </colgroup>
+                    <thead module="board_listheader_6" class="blind">
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody module="board_list_6">
+                        <!--
+                            $count = 5
+                            $main_list = yes
+                            $subject_cut = 30
+                            $main_list_reply_view = no
+                         -->
+                        <tr class="{$block_target_class}" {$block_data_attr}>
+                            <td class="title"><a href="{$link_board_detail}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                            <td class="right {$date_display|display}">{$write_date}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=6&is_pcver=T" class="btnLink">더보기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이용안내 FAQ & 프랜차이즈 상담 -->
+    <div class="boardMain">
+        <div class="leftArea">
+            <div class="board" module="board_listpackage_3">
+                <h3 module="board_title_3">
+                    <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=3&is_pcver=T">이용안내 FAQ</a>
+                </h3>
+                <div class="ec-base-table typeList gLine">
+                    <table border="1">
+                    <caption>이용안내 FAQ 목록</caption>
+                    <colgroup>
+                        <col style="width:auto;" />
+                        <col style="width:100px;" />
+                    </colgroup>
+                    <thead module="board_listheader_3" class="blind">
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody module="board_list_3">
+                        <!--
+                            $count = 5
+                            $main_list = yes
+                            $subject_cut = 30
+                            $main_list_reply_view = no
+                         -->
+                        <tr class="{$block_target_class}" {$block_data_attr}>
+                            <td class="title"><a href="{$link_board_detail}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                            <td class="right {$date_display|display}">{$write_date}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=3&is_pcver=T" class="btnLink">더보기</a>
+            </div>
+        </div>
+
+        <div class="rightArea">
+            <div class="board" module="board_listpackage_9">
+                <h3 module="board_title_9">
+                    <a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T">프랜차이즈 상담</a>
+                </h3>
+                <div class="ec-base-table typeList gLine">
+                    <table border="1">
+                    <caption>프랜차이즈 상담 목록</caption>
+                    <colgroup>
+                        <col style="width:auto;" />
+                        <col style="width:100px;" />
+                    </colgroup>
+                    <thead module="board_listheader_9" class="blind">
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody module="board_list_9">
+                        <!--
+                            $count = 5
+                            $main_list = yes
+                            $subject_cut = 30
+                            $main_list_reply_view = no
+                         -->
+                        <tr class="{$block_target_class}" {$block_data_attr}>
+                            <td class="title"><a href="{$link_board_detail}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}{$comment_count}</td>
+                            <td class="right {$date_display|display}">{$write_date}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T" class="btnLink">더보기</a>
+            </div>
+        </div>
+    </div>
+
+  </main>
+
+  <!-- 우측 정보 영역 -->
+  <aside class="board-aside">
+    <div class="board-aside-inner">
+      
+      <!-- 고객센터 정보 -->
+      <div class="cs-info-box">
+        <h3>고객센터 안내</h3>
+        <div class="cs-info-item">
+          <span class="label">운영시간</span>
+          <span class="value">평일 10:00 ~ 17:00<br>(점심 12:00 ~ 13:00)</span>
+        </div>
+        <div class="cs-info-item">
+          <span class="label">전화</span>
+          <span class="value">032-322-9958</span>
+        </div>
+        <div class="cs-info-item">
+          <span class="label">이메일</span>
+          <span class="value">mimisceo@naver.com</span>
+        </div>
+        <div class="cs-info-notice">
+          토, 일요일 및 공휴일은 휴무입니다.
+        </div>
+      </div>
+
+      <!-- 퀵 링크 -->
+      <div class="quick-links-box">
+        <h3>바로가기</h3>
+        <ul class="quick-links-list">
+          <li><a href="/myshop/order/list.html">주문/배송 조회</a></li>
+          <li><a href="/myshop/index.html">마이페이지</a></li>
+          <li><a href="/order/basket.html">장바구니</a></li>
+        </ul>
+      </div>
+
+      <!-- 프랜차이즈 배너 -->
+      <div class="franchise-banner">
+        <h3>가맹점 모집</h3>
+        <p>미미스상회와 함께<br>성공 창업하세요!</p>
+        <a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T" class="btn">가맹 문의</a>
+      </div>
+
+    </div>
+  </aside>
+
+</div>

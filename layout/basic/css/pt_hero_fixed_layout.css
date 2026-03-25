@@ -1,0 +1,210 @@
+/**
+ * Pinterest 스타일 히어로 배너 - 고정 배치 버전
+ * 2,2,1,1,1,2,2 열 구조 + 10px 간격 + 상하 페이드
+ */
+
+/* ===========================
+   히어로 배너 컨테이너
+   =========================== */
+#ptHero {
+  position: relative;
+  width: 100%;
+  margin: 60px auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+/* 타이틀 & 서브타이틀 */
+.pt-hero__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pt-hero__title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.pt-hero__subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #FF6B00;
+  margin: 0;
+}
+
+/* ===========================
+   그리드 컨테이너
+   =========================== */
+#ptGrid {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 40px;
+  overflow: hidden;
+}
+
+/* 상/하단 페이드 그라데이션 */
+#ptGrid::before,
+#ptGrid::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 상단 페이드 */
+#ptGrid::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* 하단 페이드 */
+#ptGrid::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* ===========================
+   카드 스타일
+   =========================== */
+.pt-card {
+  position: absolute;
+  width: 210px;
+  aspect-ratio: 800 / 1040;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f3f3f3;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+
+  /* 등장 애니메이션 */
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 600ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 블러 배경 (::before) */
+.pt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px);
+  transform: scale(1.15);
+  opacity: 0.55;
+}
+
+/* 원본 이미지 (contain) */
+.pt-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #f2f2f2;
+}
+
+/* 등장 애니메이션 트리거 */
+#ptHero.is-on .pt-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 좌우 맨끝 카드 올라옴 */
+.pt-card.is-lifted {
+  transform: translateY(-50px);
+}
+
+#ptHero.is-on .pt-card.is-lifted {
+  transform: translateY(-50px);
+}
+
+/* ===========================
+   닷 네비게이션
+   =========================== */
+.pt-hero__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pt-hero__dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 300ms ease;
+  border: 2px solid transparent;
+}
+
+.pt-hero__dots .dot:hover {
+  background: #bbb;
+}
+
+.pt-hero__dots .dot.is-active {
+  background: #FF6B00;
+  transform: scale(1.2);
+}
+
+/* ===========================
+   모바일 반응형 (768px 이하)
+   =========================== */
+@media screen and (max-width: 768px) {
+  #ptHero {
+    padding: 0 16px;
+  }
+
+  .pt-hero__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .pt-hero__subtitle {
+    font-size: 14px;
+  }
+
+  /* 모바일: 그리드 레이아웃 변경 */
+  #ptGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* 모바일: 카드 절대 위치 제거 */
+  .pt-card {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 모바일: 올라옴 효과 제거 */
+  .pt-card.is-lifted {
+    transform: translateY(0);
+  }
+
+  #ptHero.is-on .pt-card.is-lifted {
+    transform: translateY(0);
+  }
+
+  /* 모바일: 페이드 제거 */
+  #ptGrid::before,
+  #ptGrid::after {
+    display: none;
+  }
+}

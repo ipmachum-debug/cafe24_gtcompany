@@ -1,0 +1,126 @@
+<aside data-ez="contents-1nwzru1-1" id="aside" module="layout_slidePackage">
+ <!--@css(/layout/basic/css/slideMenu.css)-->
+ <!--@js(/layout/basic/js/slide_menu.js)-->
+ <div class="navigation_member">
+  <div class="side_logo" module="Layout_LogoTop"><a href="/"><img src="{$logo}" alt="{$mall_name}"></a></div>
+  <div class="navigation_state" data-ez-group="top-util-menu" data-ez-role="list">
+   <a data-ez-item="join" href="/member/agreement.html" module="Layout_statelogoff">
+    회원가입
+   </a>
+   <a data-ez-item="login" href="/member/login.html" module="Layout_statelogoff">
+    로그인
+   </a>
+   <a data-ez-item="modify" href="/member/modify.html" module="Layout_stateLogon">
+    내정보수정
+   </a>
+   <a data-ez-item="logout" href="{$action_logout}" module="Layout_stateLogon">
+    로그아웃
+   </a>
+   <a data-ez-item="order" href="/myshop/order/list.html">
+    주문조회
+   </a>
+   <a data-ez-item="mypage" href="/myshop/index.html" module="Layout_stateLogon">
+    마이페이지
+   </a>
+   <a data-ez-item="recent" href="/product/recent_view_product.html">
+    최근본상품
+   </a>
+  </div>
+  <!-- //navigation_state -->
+ </div>
+ <!-- //navigation_member -->
+ <nav class="navigation-menu" role="navigation">
+  <div data-ez-module="menu-side/1">
+   <div class="navigation-menu__category" id="slideCateList">
+    <ul id="slide_add_category">
+     <li>
+      <a class="view" href="/category/%EC%95%99%EA%B8%88%EB%96%A1/42/">
+       앙금떡
+      </a>
+     </li>
+     <li>
+      <a class="view" href="/category/%EC%A0%84%ED%86%B5%EB%96%A1/43/">
+       전통떡
+      </a>
+     </li>
+     <li>
+      <a class="view" href="/category/%ED%93%A8%EC%A0%84%EB%96%A1/54/">
+       퓨전떡
+      </a>
+     </li>
+     <li>
+      <a class="view" href="/category/%EC%84%A0%EB%AC%BC%EC%84%B8%ED%8A%B8/44/">
+       선물세트
+      </a>
+     </li>
+     <li>
+      <a class="view" href="/category/%EA%B8%B0%EB%8A%A5%EC%A0%80%EB%8B%B9%EB%9D%BC%EC%9D%B8/45/">
+       기능/저당라인
+      </a>
+     </li>
+     <li>
+      <a class="view" href="/category/%EC%A0%84%EC%B2%B4%EC%83%81%ED%92%88/46/">
+       전체상품
+      </a>
+     </li>
+     <li>
+      <a href="/category/BEST/55/">
+       BEST
+      </a>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <!-- //menu-side/1 -->
+  <div class="cboth slide_line">
+  </div>
+  <div class="navigation-menu__board" module="Layout_BoardInfo">
+   <div class="title">
+    고객센터
+    <button class="icoCategory" type="button">
+     펼침
+    </button>
+   </div>
+   <ul class="categoryList">
+    <li>
+     <a href="{$link_board_list}">
+      {$board_name}
+     </a>
+     {$board_adult_icon}
+    </li>
+    <li>
+     <a href="{$link_board_list}">
+      {$board_name}
+     </a>
+     {$board_adult_icon}
+    </li>
+   </ul>
+  </div>
+  <!-- //navigation-menu__board -->
+  <div module="Layout_multishopList">
+   <button class="toggle" type="button">
+    {$current_language}
+    <i aria-hidden="true" class="icon icoArrowBottom">
+    </i>
+   </button>
+   <ul module="Layout_multishopListitem">
+    <li class="{$selected_class}">
+     <a href="//{$shop_domain}/">
+      {$locale_language}
+     </a>
+    </li>
+    <li class="{$selected_class}">
+     <a href="//{$shop_domain}/">
+      {$locale_language}
+     </a>
+    </li>
+   </ul>
+  </div>
+ </nav>
+ <button class="btnClose" type="button">
+  <i aria-hidden="true" class="icon icoClose">
+  </i>
+  닫기
+ </button>
+</aside>
+<!--#ez="1/2"-->

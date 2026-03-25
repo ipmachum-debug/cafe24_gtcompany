@@ -1,0 +1,70 @@
+<!-- 게시판 공통 레이아웃 래퍼 -->
+<!--@css(/layout/basic/css/board_layout.css)-->
+
+<div class="board-container">
+  
+  <!-- 좌측 사이드바 -->
+  <aside class="board-sidebar">
+    <div class="board-sidebar-inner">
+      <div class="board-sidebar-title">고객센터</div>
+      <ul class="board-sidebar-menu">
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=1&is_pcver=T">공지사항</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=4&is_pcver=T">상품 사용후기</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=6&is_pcver=T">상품 Q&A</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/b/board_list.php?board_no=3&is_pcver=T" class="active">이용안내 FAQ</a></li>
+        <li><a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T">프랜차이즈 상담</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 중앙 게시판 영역 -->
+  <main class="board-main">
+    <!-- 여기에 기존 게시판 내용이 들어갑니다 -->
+    {BOARD_CONTENT}
+  </main>
+
+  <!-- 우측 정보 영역 -->
+  <aside class="board-aside">
+    <div class="board-aside-inner">
+      
+      <!-- 고객센터 정보 -->
+      <div class="cs-info-box">
+        <h3>고객센터 안내</h3>
+        <div class="cs-info-item">
+          <span class="label">운영시간</span>
+          <span class="value">평일 10:00 ~ 17:00<br>(점심 12:00 ~ 13:00)</span>
+        </div>
+        <div class="cs-info-item">
+          <span class="label">전화</span>
+          <span class="value">1588-XXXX</span>
+        </div>
+        <div class="cs-info-item">
+          <span class="label">이메일</span>
+          <span class="value">contact@mimis.com</span>
+        </div>
+        <div class="cs-info-notice">
+          토, 일요일 및 공휴일은 휴무입니다.
+        </div>
+      </div>
+
+      <!-- 퀵 링크 -->
+      <div class="quick-links-box">
+        <h3>바로가기</h3>
+        <ul class="quick-links-list">
+          <li><a href="/myshop/order/list.html">주문/배송 조회</a></li>
+          <li><a href="/myshop/index.html">마이페이지</a></li>
+          <li><a href="/order/basket.html">장바구니</a></li>
+        </ul>
+      </div>
+
+      <!-- 프랜차이즈 배너 -->
+      <div class="franchise-banner">
+        <h3>가맹점 모집</h3>
+        <p>미미스상회와 함께<br>성공 창업하세요!</p>
+        <a href="https://mimisshop.co.kr/shop1/front/php/myshop/cons_board_list.php?board_no=9&is_pcver=T" class="btn">가맹 문의</a>
+      </div>
+
+    </div>
+  </aside>
+
+</div>

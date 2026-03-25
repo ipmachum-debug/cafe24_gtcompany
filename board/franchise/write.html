@@ -1,0 +1,67 @@
+
+<!--#include virtual="/layout/basic/header.html"-->
+
+<div id="mimis-main" class="main">
+  <div class="container">
+
+    <!-- 페이지 경로 -->
+    <div module="title_9">
+      <div class="path">
+        <span><a href="/">홈</a></span>
+        <span><a href="/customer_center.html">고객센터</a></span>
+        <span><a href="/board/franchise/write.html">가맹 문의</a></span>
+      </div>
+    </div>
+
+    <!-- 페이지 제목 -->
+    <div module="Board_WriteTitle_10">
+      <h2><font color="#555555">{$board_name}</font></h2>
+    </div>
+
+    <!-- 가맹 문의 작성 폼 -->
+    <div module="Board_WriteForm_10">
+      <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+          <caption>가맹 문의</caption>
+          <colgroup>
+            <col style="width:130px;"/>
+            <col style="width:auto;"/>
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="row">제목</th>
+              <td>{$form.subject}</td>
+            </tr>
+            <tr>
+              <th scope="row">작성자</th>
+              <td>{$form.writer}</td>
+            </tr>
+            <tr class="{$config.use_password|display}">
+              <th scope="row">비밀번호</th>
+              <td>{$form.password}</td>
+            </tr>
+            <tr class="{$config.use_secret|display}">
+              <th scope="row">비밀글설정</th>
+              <td>{$form.secret}</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="clear">{$form.content}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ec-base-button">
+        <span class="gLeft">
+          <a href="/board/franchise/list.html{$param_list}" class="btnNormal">목록</a>
+        </span>
+        <span class="gRight">
+          <a href="#none" class="btnSubmitFix" onclick="{$action_write}">등록</a>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--#include virtual="/layout/basic/footer.html"-->

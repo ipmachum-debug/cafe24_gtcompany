@@ -1,0 +1,367 @@
+@media all and (min-width:1024px) {
+
+	/* 레이아웃 테마02 */
+	/* 상단 */
+	#header.layout2 .inner .top_nav_box .top_logo {justify-content:flex-start;align-items:center;}
+	#header.layout2 .inner .top_nav_box .top_category {margin:0 130px 0 -25px;}
+	#header.layout2 .inner .top_nav_box .top_category > ul {justify-content: flex-start;}
+	#header.layout2 .inner .top_nav_box .top_nav {margin-right:20px;flex-basis:auto;}
+
+	/* 하단 */
+	#footer.layout2 .inner .bt_logo {text-align:right;justify-content:flex-end;}
+	#footer.layout2 .inner .bt_logo a {justify-content:flex-end;}
+	#footer.layout2 .inner .bt_wrap {flex-direction:row-reverse;}
+	#footer.layout2 .inner .bt_cscenter {order:2;margin:0 90px 0 0;}
+	#footer.layout2 .inner .bt_util ul {justify-content:flex-end;}
+	#footer.layout2 .inner .bt_bank {margin-left:0;margin-right:auto;order:1;}
+	#footer.layout2 .inner .bt_info {text-align:right;}
+	#footer.layout2 .inner .bt_info .bt_info_list {justify-content:flex-end;}
+	#footer.layout2 .inner .bt_info .bt_info_list > div {margin:0 0 0 10px;}
+
+
+
+	/* 레이아웃 테마03 */
+	/* 상단 */
+	#header.layout3 .inner .top_nav_box {flex-wrap:nowrap;align-items:flex-start;}
+	#header.layout3 .inner .top_nav_box .top_logo {flex-basis:auto;align-items:center;margin:0 60px 0 0;order:2;height:80px;}
+	#header.layout3 .inner .top_nav_box .top_nav {top:0;flex-basis:auto;order:1;}
+	#header.layout3 .inner .top_nav_box div[data-ez-module='menu-main/1'] {order:3;}
+	#header.layout3 .inner .top_nav_box .top_category {margin:0 130px 0 0;}
+	#header.layout3 .inner .top_nav_box .top_category > ul {justify-content: flex-start;}
+	#header.layout3 .inner .top_nav_box .top_mypage {top:0;flex-basis:auto;order:4;}
+	#header.layout3 .inner .top_nav_box .top_mypage a.xans-layout-orderbasketcount .count {top:40px;}
+
+	/* 하단 */
+	#footer.layout3 .inner .bt_logo {margin:0 auto 40px;text-align:center;}
+	#footer.layout3 .inner .bt_util {margin:0 auto 40px;text-align:center;}
+	#footer.layout3 .inner .bt_util ul {justify-content:center;align-items:center;}
+	#footer.layout3 .inner .bt_wrap {flex-direction:column;justify-content:center;align-items:center;margin:0;}
+	#footer.layout3 .inner .bt_cscenter {margin:0 auto 40px;text-align:center;order:2;justify-content:center;}
+	#footer.layout3 .inner .bt_cscenter .title {display:block;margin:0;width:100%;}
+	#footer.layout3 .inner .bt_bank {margin:0 auto 40px;text-align:center;order:3;}
+	#footer.layout3 .inner .bt_bank .title {display:block;margin:0;width:100%;}
+	#footer.layout3 .inner .bt_bank .title_sub {line-height:2;font-size:12px;}
+	#footer.layout3 .inner .bt_info {margin:0 auto 40px;text-align:center;order:1;}
+	#footer.layout3 .inner .bt_info .bt_info_list {justify-content:center;}
+	#footer.layout3 .inner .bt_info .bt_info_list > div {margin:0 5px;}
+	#footer.layout3 .inner .bt_escrow {justify-content:center;margin-bottom:0;}
+	#footer.layout3 .inner .bt_wrap2 {border:0;padding:0;margin-top:40px;flex-direction:column-reverse;justify-content:center;align-items:center;}
+	#footer.layout3 .inner .bt_wrap2 .bt_sns {margin-bottom:40px;}
+
+
+
+	/* 레이아웃 테마04 */
+	/* 상단 */
+	#header.layout4 .inner {position:relative;}
+	#header.layout4 .inner .toparea {flex-direction:row-reverse;}
+	#header.layout4 .inner .toparea .toparea_state {margin-left:-20px;}
+    #header.layout4 .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li {margin:0 0 0 10px;}
+	#header.layout4 .inner .top_nav_box .top_nav {position:absolute;top:-60px;left:0;z-index:11;}
+	#header.layout4 .inner .top_nav_box .top_nav .eNavFold {height:50px;}
+	#header.layout4 .inner .top_nav_box .top_nav .eNavFold .icon.icoNav {margin:0 auto;}
+	#header.layout4 .inner .top_nav_box .top_category {margin:0 130px 0 -25px;}
+	#header.layout4 .inner .top_nav_box .top_category ul {justify-content: flex-start;}
+	#header.layout4.fixed .inner .top_nav_box .top_nav {top:60px;}
+	#header.layout4.fixed .inner .top_nav_box .top_nav .eNavFold {height:80px;}
+	#header.layout4.fixed .inner .top_nav_box .top_category {margin:0 130px 0 25px;}
+
+
+
+	/* 레이아웃 테마05 (새 구조) */
+	/* 상단 (PC) */
+	#header.layout5 .inner {position:relative;}
+	#header.layout5 .inner .top_nav_box {
+		display:flex;
+		align-items:center;
+		justify-content:space-between;
+		flex-wrap:nowrap;
+		background:#fff;
+	}
+	#header.layout5 .inner .top_nav_box .top_logo {
+		flex:0 0 auto;
+		margin:0;
+		height:70px;
+		display:flex;
+		align-items:center;
+	}
+	#header.layout5 .inner .top_nav_box .top_logo a {
+		display:flex;
+		align-items:center;
+	}
+
+	/* 가운데 상단 메뉴 */
+	#header.layout5 .inner .mimi-top-nav {
+		flex:1 1 auto;
+		display:flex;
+		align-items:center;
+		gap:32px;
+		margin:0 40px;
+		font-size:14px;
+	}
+
+	.mimi-allcate-toggle {
+		display:inline-flex;
+		align-items:center;
+		gap:8px;
+		border:none;
+		background:transparent;
+		padding:0;
+		cursor:pointer;
+		font-size:14px;
+		font-weight:600;
+	}
+	.mimi-allcate-toggle .mimi-allcate-text {
+		letter-spacing:0.04em;
+	}
+
+	/* 햄버거 아이콘 */
+	.mimi-icon-hamburger {
+		position:relative;
+		width:18px;
+		height:12px;
+		display:inline-block;
+	}
+	.mimi-icon-hamburger span {
+		position:absolute;
+		left:0;
+		right:0;
+		height:2px;
+		background:#000;
+		border-radius:10px;
+		transition:transform .2s ease, opacity .2s ease, top .2s ease, bottom .2s ease;
+	}
+	.mimi-icon-hamburger span:nth-child(1) { top:0; }
+	.mimi-icon-hamburger span:nth-child(2) { top:5px; }
+	.mimi-icon-hamburger span:nth-child(3) { bottom:0; }
+
+	/* 펼쳐졌을 때 X 모양 */
+	.mimi-allcate-toggle.is-open .mimi-icon-hamburger span:nth-child(1) {
+		top:5px;
+		transform:rotate(45deg);
+	}
+	.mimi-allcate-toggle.is-open .mimi-icon-hamburger span:nth-child(2) {
+		opacity:0;
+	}
+	.mimi-allcate-toggle.is-open .mimi-icon-hamburger span:nth-child(3) {
+		bottom:5px;
+		transform:rotate(-45deg);
+	}
+
+	.mimi-shortcut-menu {
+		display:flex;
+		align-items:center;
+		gap:28px;
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	.mimi-shortcut-menu li a {
+		font-size:14px;
+	}
+
+	/* 우측 마이페이지 영역 정렬 */
+	#header.layout5 .inner .top_nav_box .top_mypage {
+		flex:0 0 auto;
+		position:static;
+		height:70px;
+		display:flex;
+		align-items:center;
+		gap:16px;
+	}
+	#header.layout5 .inner .top_nav_box .top_mypage a {
+		display:flex;
+		align-items:center;
+	}
+	#header.layout5 .inner .top_nav_box .top_mypage a.xans-layout-orderbasketcount .count {
+		top:auto;
+	}
+
+	/* 메가메뉴 레이어 (PC) */
+	.mimi-allcate-layer {
+		display:none;
+		position:relative;
+		width:100%;
+		background:#fff;
+		border-top:1px solid #f0f0f0;
+		border-bottom:1px solid #f0f0f0;
+		z-index:40;
+	}
+	.mimi-allcate-layer.is-open {
+		display:block;
+	}
+
+	.mimi-allcate-inner {
+		max-width:1200px;
+		margin:0 auto;
+		padding:24px 0 32px;
+	}
+
+	.mimi-allcate-header {
+		display:flex;
+		justify-content:flex-start;
+		margin-bottom:24px;
+	}
+
+	.mimi-allcate-close {
+		display:inline-flex;
+		align-items:center;
+		gap:10px;
+		border:none;
+		background:transparent;
+		padding:0;
+		cursor:pointer;
+		font-size:14px;
+		font-weight:600;
+		color:#ff6a00;
+	}
+
+	.mimi-icon-close {
+		position:relative;
+		width:14px;
+		height:14px;
+		display:inline-block;
+	}
+	.mimi-icon-close:before,
+	.mimi-icon-close:after {
+		content:"";
+		position:absolute;
+		left:0;
+		right:0;
+		top:6px;
+		height:2px;
+		background:#ff6a00;
+		border-radius:10px;
+	}
+	.mimi-icon-close:before { transform:rotate(45deg); }
+	.mimi-icon-close:after  { transform:rotate(-45deg); }
+
+	.mimi-allcate-grid {
+		display:grid;
+		grid-template-columns:repeat(8,minmax(0,1fr));
+		gap:32px;
+		font-size:13px;
+	}
+
+	.mimi-allcate-col h3 {
+		font-size:14px;
+		font-weight:600;
+		margin:0 0 10px;
+		padding-bottom:6px;
+		border-bottom:2px solid #111;
+	}
+	.mimi-allcate-col ul {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	.mimi-allcate-col ul li + li {
+		margin-top:6px;
+	}
+
+
+	/* 레이아웃 테마06 */
+	/* 상단 */
+	#header.layout6 .inner {position:relative;}
+	#header.layout6 .inner .top_nav_box .top_logo {align-items:center;}
+	#header.layout6 .inner .top_nav_box .top_mypage {top:0;height:70px;}
+	#header.layout6 .inner .top_nav_box .top_nav {display:block;top:0;}
+	#header.layout6 .inner .top_nav_box .top_nav .eNavFold {height:70px;}
+	#header.layout6 .inner .top_nav_box .top_category {margin:0 auto 0 50px;}
+	#header.layout6 .inner .top_nav_box .top_category > ul {height:80px;overflow:hidden;}
+    #header.layout6 .inner .top_nav_box .top_category > ul > li {position:static;}
+    #header.layout6 .inner .top_nav_box .top_category .sub_cate01 {left:auto;margin-left:-25px;}
+	#header.layout6 .inner .top_nav_box .top_mypage a.xans-layout-orderbasketcount .count {top:35px;}
+	#header.layout6 + #aside {width:40%; max-width:700px;}
+
+
+	/* 풀사이즈 */
+	#contents > .section {max-width:1230px;width:92%;margin-left:auto;margin-right:auto;}
+	.section_full {width:100% !important;max-width:100% !important;}
+}
+
+@media all and (max-width:1780px) {
+
+	/* 레이아웃 테마03 */
+	#header.layout3 .inner .top_nav_box .top_category > ul > li {height:80px;}
+	#header.layout3 .inner .top_nav_box .top_category > ul > li > a {line-height:78px;}
+	#header.layout3 .inner .top_nav_box .top_mypage {height:80px;}
+	#header.layout3 .inner .top_nav_box .top_nav .eNavFold {height:80px;}
+	#header.layout3 .inner .top_nav_box .top_category .sub_cate01,
+	#header.layout3 .inner .top_nav_box .top_category .sub-category {top:80px;}
+
+
+	/* 레이아웃 테마04 */
+	#header.layout4.fixed .inner .top_nav_box .top_nav .eNavFold {height:50px;}
+
+	#header.layout6 .inner .top_nav_box .top_category > ul {height:50px;}
+}
+
+@media all and (max-width:1024px) {
+
+	/* 레이아웃 테마03 */
+	#header.layout3 .inner .top_nav_box .top_mypage {height:65px;}
+	#header.layout3 .inner .top_nav_box .top_nav .eNavFold {height:65px;}
+
+
+	/* 레이아웃 테마05 - 모바일 */
+	#header.layout5 .inner .top_nav_box {
+		display:flex;
+		align-items:center;
+		justify-content:space-between;
+		padding:0 12px;
+	}
+	#header.layout5 .inner .top_nav_box .top_logo {
+		height:56px;
+	}
+	#header.layout5 .inner .top_nav_box .top_logo img {
+		max-height:40px;
+	}
+
+	.mimi-top-nav {
+		flex:1 1 auto;
+		display:flex;
+		align-items:center;
+		justify-content:flex-end;
+		gap:14px;
+		margin:0 8px;
+	}
+
+	/* 모바일에서는 숏컷 메뉴 숨기고 햄버거만 사용 */
+	.mimi-shortcut-menu {
+		display:none;
+	}
+
+	#header.layout5 .inner .top_nav_box .top_mypage {
+		height:56px;
+		gap:10px;
+	}
+
+	/* 메가메뉴 레이어 (모바일) */
+	.mimi-allcate-layer {
+		display:none;
+		position:absolute;
+		left:0;
+		right:0;
+		top:56px;
+		background:#fff;
+		border-top:1px solid #f0f0f0;
+		border-bottom:1px solid #f0f0f0;
+		z-index:50;
+	}
+	.mimi-allcate-layer.is-open {
+		display:block;
+	}
+
+	.mimi-allcate-inner {
+		padding:16px 16px 24px;
+	}
+	.mimi-allcate-grid {
+		display:grid;
+		grid-template-columns:repeat(2,minmax(0,1fr));
+		gap:20px;
+		font-size:13px;
+	}
+	.mimi-allcate-col h3 {
+		font-size:13px;
+	}
+}

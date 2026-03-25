@@ -1,0 +1,923 @@
+/* =========================================================
+   PC 화면에서는
+   - 모바일 헤더 / 하단 네비 숨김
+   - PC 헤더(toparea, top_nav_box) 강제 표시
+========================================================= */
+@media screen and (min-width: 768px) {
+  /* PC용 헤더는 무조건 보이게 */
+  #header .inner .toparea,
+  #header .inner .top_nav_box {
+    display: block !important;
+  }
+
+  /* 모바일 전용 요소는 숨김 */
+  .bottom-nav {
+    display: none !important;
+  }
+}
+
+/* =========================================================
+   Mobile Only (max-width: 767px)
+   PC 화면에는 일절 영향 주지 않음
+========================================================= */
+@media screen and (max-width: 767px) {
+
+  /* ------------------------------
+     PC용 헤더/네비는 모바일에서 숨김
+  ------------------------------ */
+  #header .inner .toparea,
+  #header .inner .top_nav_box {
+    display: none !important;
+  }
+
+  /* 기본 모바일 래퍼 보이게 */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0 !important;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding-top: 8px;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 30px) !important;
+  }
+
+  /* ------------------------------
+     모바일 헤더 (햄버거 + 로고 + 장바구니)
+  ------------------------------ */
+  #header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+    border-bottom: 0;
+  }
+
+  .mobile_header_wrap {
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .mobile_main_header,
+  .mimi-header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    padding: 0 15px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+
+  /* 햄버거 버튼 수정 - 3개 라인 모두 보이도록 */
+  .mimi-mobile-hamburger,
+  .mobile_main_header .mimi-allcate-toggle {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    padding: 0;
+    margin-right: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .mimi-mobile-hamburger span,
+  .mobile_main_header .mimi-allcate-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    border-radius: 1px;
+    transition: all 0.25s ease;
+  }
+
+  /* 로고 */
+  .mimi-logo,
+  .mobile_main_header .top_logo {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  .mimi-logo img,
+  .mobile_main_header .top_logo img {
+    max-height: 30px;
+    width: auto;
+  }
+
+  /* 우측 아이콘 - 장바구니만 */
+  .mimi-icons,
+  .mobile_main_header .top_mypage {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .mimi-icons a,
+  .mobile_main_header .top_mypage a {
+    margin-left: 0;
+  }
+
+  /* 검색, 마이페이지 아이콘 숨기기 */
+  .mimi-icon-search,
+  .mimi-icon-user,
+  .mobile_main_header .top_mypage a:not([href*="basket"]) {
+    display: none !important;
+  }
+
+  /* 장바구니 아이콘 스타일 */
+  .mimi-icon-cart svg,
+  .mobile_main_header .top_mypage a[href*="basket"] svg {
+    width: 26px;
+    height: 26px;
+    stroke: #111;
+    fill: none;
+  }
+
+  /* 카테고리 탭 */
+  .mobile_category_tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+
+  .mobile_category_tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile_category_tabs .mimi-shortcut-menu {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .mobile_category_tabs .mimi-shortcut-menu li {
+    flex-shrink: 0;
+    padding: 0 12px;
+  }
+
+  .mobile_category_tabs .mimi-shortcut-menu li a {
+    display: block;
+    padding: 12px 0;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .mobile_category_tabs .mimi-shortcut-menu li a.active {
+    color: #ff8c00;
+    border-bottom: 2px solid #ff8c00;
+  }
+
+  /* ------------------------------
+     모바일 히어로 배너 (한 장씩 화면 채우기)
+  ------------------------------ */
+  .hero-banner-section {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-swiper {
+    width: 100vw !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .hero-swiper .swiper-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: stretch;
+    height: auto !important;
+  }
+
+  .hero-swiper .swiper-slide {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    height: auto !important;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-swiper .swiper-slide .hero-content {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-swiper .swiper-slide img {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    display: block;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  /* 히어로 배너 텍스트 오버레이 */
+  .hero-swiper .swiper-slide .hero-text {
+    position: absolute;
+    bottom: 70px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+  }
+
+  .hero-swiper .swiper-slide .hero-text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .hero-swiper .swiper-slide .hero-text p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.95;
+  }
+
+  .hero-swiper .swiper-pagination {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 20;
+  }
+
+  .hero-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+    margin: 0 4px;
+  }
+
+  .hero-swiper .swiper-pagination-bullet-active {
+    background: #fff;
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 상단 카테고리 아이콘 그리드 */
+  .category-icon-section .category-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 10px 5px;
+  }
+
+  .category-icon-section .category-icons a.category-icon {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .category-icon-section .category-icons a.category-icon .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ff8c00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+  }
+
+  .category-icon-section .category-icons a.category-icon .icon-text {
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .category-icon-section .category-icons a.category-icon span {
+    font-size: 12px;
+  }
+
+  /* ------------------------------
+     하단 고정 네비게이션 (.bottom-nav) - 아이콘 크기 대폭 증가
+  ------------------------------ */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0 !important;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding-top: 8px;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 30px) !important;
+  }
+
+  .bottom-nav .bottom-nav__tabBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 85px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li {
+    flex: 1;
+    text-align: center;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li a,
+  .bottom-nav .bottom-nav__tabBar li button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0 10px;
+    font-size: 11px;
+    color: #666;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    gap: 6px;
+    position: relative;
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* 아이콘 크기 (42px → 34px, 20% 축소) */
+  .bottom-nav .bottom-nav__tabBar li svg {
+    width: 34px !important;
+    height: 34px !important;
+    stroke: #666 !important;
+    fill: none !important;
+    stroke-width: 2 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* 카테고리 아이콘만 오렌지색 */
+  .bottom-nav .bottom-nav__tabBar li:nth-child(1) svg {
+    width: 34px !important;
+    height: 34px !important;
+    stroke: #ff8c00 !important;
+    stroke-width: 2.2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* 중앙 '홈' 아이콘 - 동그란 버튼 */
+  .bottom-nav .bottom-nav__tabBar li:nth-child(3) {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li:nth-child(3) a {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(255, 140, 0, 0.35);
+    padding: 0;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li:nth-child(3) a svg {
+    width: 36px;
+    height: 36px;
+    stroke: #fff;
+    stroke-width: 2.5;
+    margin-top: 0;
+  }
+
+  /* 홈 텍스트를 아이콘 중앙 하단에 배치 */
+  .bottom-nav .bottom-nav__tabBar li:nth-child(3) a span {
+    display: block;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* 장바구니 카운트 배지 */
+  .bottom-nav .bottom-nav__tabBar li .count {
+    position: absolute;
+    top: 8px;
+    right: 50%;
+    transform: translateX(14px);
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background: #ff4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* 상단으로 이동 버튼 제거 */
+  .bottom-nav .bottom-nav__top {
+    display: none !important;
+  }
+
+  /* 하단 네비 자리 확보 */
+  #wrap {
+    padding-bottom: 100px;
+  }
+
+  /* 컨텐츠 영역 여백 제거 (히어로 배너 전체 화면) */
+  #container,
+  #contents {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+} /* end of @media */
+
+  /* 카테고리/검색 버튼 텍스트 표시 */
+  .bottom-nav .bottom-nav__tabBar li button {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li button svg {
+    display: block !important;
+  }
+
+  .bottom-nav .btnNav,
+  .bottom-nav .btnSearch {
+    font-size: 11px !important;
+    color: #666 !important;
+    font-weight: 400 !important;
+  }
+
+  /* 카테고리/검색 버튼 강제 표시 */
+  .bottom-nav .btnNav,
+  .bottom-nav .btnSearch,
+  .bottom-nav .eNavFold,
+  .bottom-nav .eSearch {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 6px 0 10px !important;
+    font-size: 11px !important;
+    color: #666 !important;
+    font-weight: 400 !important;
+    border: none !important;
+    background: none !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+  }
+
+  .bottom-nav .btnNav svg,
+  .bottom-nav .btnSearch svg,
+  .bottom-nav .eNavFold svg,
+  .bottom-nav .eSearch svg {
+    display: block !important;
+    width: 34px !important;
+    height: 34px !important;
+    stroke: #666 !important;
+    fill: none !important;
+  }
+
+  /* 카테고리 아이콘만 오렌지색 */
+  .bottom-nav .btnNav svg,
+  .bottom-nav .eNavFold svg {
+    stroke: #ff8c00 !important;
+  }
+
+  /* 슬라이드 검색창 */
+  .mimi-search-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mimi-search-layer.active {
+    transform: translateY(0);
+  }
+
+  .mimi-search-layer.is-open {
+    transform: translateY(0);
+  }
+
+
+  .mimi-search-layer-inner {
+    padding: 15px;
+  }
+
+  .mimi-search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px 15px;
+  }
+
+  .mimi-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    outline: none;
+    padding: 5px 0;
+  }
+
+  .mimi-search-submit,
+  .mimi-search-close {
+    border: none;
+    background: transparent;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mimi-search-submit svg,
+  .mimi-search-close svg {
+    stroke: #666;
+  }
+
+  .mimi-search-close svg {
+    stroke: #999;
+  }
+
+/* =====================================================
+   하단바 검색창 스타일
+===================================================== */
+/* 검색창 오버레이 배경 */
+.bottom-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.bottom-search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.bottom-search-layer {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 95px);
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.bottom-search-layer.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.bottom-search-inner {
+  padding: 15px;
+}
+
+.bottom-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.bottom-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  outline: none;
+  padding: 5px 0;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.bottom-search-input::placeholder {
+  color: #999;
+}
+
+.bottom-search-submit,
+.bottom-search-close {
+  border: none;
+  background: transparent;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.bottom-search-submit svg {
+  stroke: #666;
+  width: 20px;
+  height: 20px;
+}
+
+.bottom-search-close svg {
+  stroke: #999;
+  width: 20px;
+  height: 20px;
+}
+
+.bottom-search-submit:hover svg {
+  stroke: #ff8c00;
+}
+
+.bottom-search-close:hover svg {
+  stroke: #333;
+}
+
+/* 히어로 배너 왼쪽 화살표 숨김 */
+@media screen and (max-width: 767px) {
+  .hero-swiper .swiper-button-prev,
+  .hero-swiper .swiper-button-next {
+    display: none !important;
+  }
+}
+
+/* =====================================================
+   레시피 제품 모바일 2×1 구조
+===================================================== */
+@media screen and (max-width: 767px) {
+  /* 레시피 헤더 카드 */
+  .recipe-header-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .recipe-header-card .recipe-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .recipe-header-card .recipe-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .recipe-header-card .recipe-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 8px;
+  }
+
+  .recipe-header-card .recipe-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* 레시피 제품 리스트 - 2×1 구조 */
+  .recipe-products-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .recipe-product-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .recipe-product-item .thumbnail {
+    width: 100%;
+  }
+
+  .recipe-product-item .thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .recipe-product-item .description {
+    padding: 10px;
+  }
+
+  .recipe-product-item .name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .recipe-product-item .price {
+    font-size: 13px;
+    font-weight: 800;
+    color: #FF6B00;
+  }
+}
+
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .bottom-nav .bottom-nav__tabBar li button span {
+    display: block !important;
+  }
+
+/* ========================================
+   고객센터 드롭다운 스타일
+======================================== */
+.gnb-cs {
+  position: relative;
+}
+
+.gnb-cs-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 10px 0;
+  margin-top: 5px;
+}
+
+.gnb-cs:hover .gnb-cs-dropdown {
+  display: block;
+}
+
+.gnb-cs-dropdown li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gnb-cs-dropdown li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.gnb-cs-dropdown li a:hover {
+  background: #f5f5f5;
+}
+
+.close-dropdown {
+  border-top: 1px solid #eee;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.btn-close-dropdown {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background: #ff8c00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-close-dropdown:hover {
+  background: #e67e00;
+}
+
+/* 드롭다운이 열렸을 때 */
+.gnb-cs.active .gnb-cs-dropdown {
+  display: block !important;
+}
+
+
+/* =========================================================
+   결제 버튼 z-index 명시적 설정
+   - 메가메뉴/검색 레이어 위에 결제 버튼이 클릭 가능하도록 설정
+========================================================= */
+.btnSubmit,
+#orderFixItem .btnSubmit,
+.ec-base-button .btnSubmit,
+button[id*="payment"],
+button[id*="order"] {
+  position: relative;
+  z-index: 10;
+}
+
+/* 주문 페이지 전체 z-index 조정 */
+#mCafe24Order {
+  position: relative;
+  z-index: 5;
+}
+
+/* 결제 정보 섹션 */
+.rightGroup,
+.stickyTop {
+  position: relative;
+  z-index: 6;
+}
+
+/* 주문 버튼 컨테이너 */
+#orderFixItem {
+  position: relative;
+  z-index: 10;
+}

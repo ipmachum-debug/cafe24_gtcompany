@@ -1,0 +1,159 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<style>
+/* 헤더~회사소개, 회사소개~회사소개정보 사이 여백 축소 */
+.section.path,
+.section.titleArea,
+.section.titleArea + [module="mall_company"] {
+  margin-top: 10px !important;
+  margin-bottom: 25px !important;
+  padding-top: 10px !important;
+  padding-bottom: 25px !important;
+}
+
+/* h2~h3 제목 간 간격 60% 축소 */
+.section.titleArea + [module="mall_company"] .titleArea.titleArea--middle {
+  margin-top: 12px !important;
+  padding-top: 8px !important;
+}
+
+/* 제목 여백 */
+.titleArea h2, .titleArea h3 {
+  margin: 10px 0 !important;
+}
+
+/* 표 위쪽 불필요한 공간 최소화 */
+.ec-base-table {
+  margin-top: 15px !important;
+}
+
+/* ✅ 회사소개 테이블 카드 스타일 + 골드 Glow 효과 */
+@keyframes gold-glow {
+  0% { box-shadow: 0 6px 16px rgba(199,164,91,0.15), 0 0 0 rgba(199,164,91,0); }
+  50% { box-shadow: 0 10px 24px rgba(199,164,91,0.25), 0 0 15px rgba(199,164,91,0.3); }
+  100% { box-shadow: 0 6px 16px rgba(199,164,91,0.15), 0 0 0 rgba(199,164,91,0); }
+}
+
+.ec-base-table table {
+  border: 2px solid #C7A45B;              /* 금색 테두리 */
+  border-radius: 16px;                    /* 모서리 둥글게 */
+  background-color: #FFFDF8;              /* 아이보리톤 배경 */
+  box-shadow: 0 6px 16px rgba(199,164,91,0.15); /* 은은한 그림자 */
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* ✨ Hover 시 Glow */
+.ec-base-table table:hover {
+  animation: gold-glow 1.8s ease-in-out infinite;
+  border-color: #e1c773;
+  transform: translateY(-2px);
+}
+
+/* 셀 스타일 */
+.ec-base-table th, 
+.ec-base-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid #E9D8A6;       /* 연한 금색 라인 */
+  font-size: 14px;
+  color: #333;
+}
+
+/* 마지막 행 테두리 제거 */
+.ec-base-table tbody tr:last-child th,
+.ec-base-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 제목 강조 */
+.ec-base-table th {
+  background: #FFF8E9;
+  font-weight: 600;
+  color: #7A622E;
+}
+
+/* 반응형 대응 */
+@media (max-width:768px){
+  .ec-base-table th, .ec-base-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+</style>
+
+<!-- ===== 기본 회사소개 구조 ===== -->
+<div class="section path" style="margin-bottom: 0px;">
+  <span>현재 위치</span>
+  <ol>
+    <li><a href="/">홈</a></li>
+    <li title="현재 위치"><strong>회사소개</strong></li>
+  </ol>
+</div>
+
+<div class="section titleArea" style="margin-bottom: 0px;">
+  <h2>회사소개</h2>
+</div>
+
+<div module="mall_company" class="section" style="margin-bottom: 0px;">
+  <!--@css(/css/module/mall/company.css)-->
+
+  <div class="titleArea titleArea--middle">
+    <h3>회사소개 정보</h3>
+  </div>
+  <div class="info">{$info}</div>
+
+  <div class="{$map_display|display}">
+    <div class="titleArea titleArea--middle">
+      <h3>회사위치 정보</h3>
+    </div>
+    <div class="map">{$map_image}</div>
+  </div>
+
+  <div class="ec-base-table" module="Layout_footer">
+    <table border="1">
+      <caption>회사소개</caption>
+      <colgroup>
+        <col style="width:180px;">
+        <col style="width:auto;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th scope="row">상점명</th>
+          <td>{$mall_name}</td>
+        </tr>
+        <tr>
+          <th scope="row">대표이사</th>
+          <td><a href="mailto:{$email}">{$president_name}</a></td>
+        </tr>
+        <tr>
+          <th scope="row">대표전화</th>
+          <td><a href="tel:{$phone}">{$phone}</a></td>
+        </tr>
+        <tr>
+          <th scope="row">주소</th>
+          <td>{$mall_addr1}<br>{$mall_addr2}</td>
+        </tr>
+        <tr>
+          <th scope="row">사업자등록번호</th>
+          <td>{$company_regno}</td>
+        </tr>
+        <tr>
+          <th scope="row">통신판매업신고</th>
+          <td>{$network_regno}</td>
+        </tr>
+        <tr class="{$cpo_email|display}">
+          <th scope="row">개인정보 관리책임</th>
+          <td><a href="mailto:{$cpo_email}">{$cpo_name}</a></td>
+        </tr>
+        <tr>
+          <th scope="row">호스팅제공</th>
+          <td>카페24(주)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--#ez="1/76"-->
+
+

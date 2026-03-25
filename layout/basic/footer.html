@@ -1,0 +1,170 @@
+<div class="bottom-search-overlay" id="bottomSearchOverlay" data-ez="contents-1o7zayi-1"></div>
+<div class="bottom-search-layer" id="bottomSearchLayer" data-ez="contents-1jusjc8-1">
+  <div class="bottom-search-inner">
+    <form action="/product/search.html" method="get" class="bottom-search-form">
+      <input type="text" name="keyword" class="bottom-search-input" placeholder="검색어를 입력하세요">
+      <button type="submit" class="bottom-search-submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </button>
+      <button type="button" class="bottom-search-close" id="bottomSearchClose">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+<div class="bottom-nav RMB RTB" data-ez="contents-0b1z5w0-1" ez-module="bottom-navigation">
+  <ul class="bottom-nav__tabBar">
+    <!-- 카테고리 -->
+    <li>
+      <button class="btnNav eNavFold" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+        </svg>
+        카테고리
+      </button>
+    </li>
+    <!-- 검색 -->
+    <li>
+      <button class="btnSearch eSearch" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        검색
+      </button>
+    </li>
+    <!-- 홈 -->
+    <li>
+      <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <path d="M3 12L12 3l9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>홈</span>
+      </a>
+    </li>
+    <!-- 장바구니 -->
+    <li module="Layout_stateLogon">
+      <a href="/order/basket.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        장바구니
+        <span class="count {$basket_count_display|display} {$basket_count_display_class}">
+          <span class="{$basket_count_class}">
+            {$basket_count}
+          </span>
+        </span>
+      </a>
+    </li>
+    <li module="Layout_stateLogoff">
+      <a href="/order/basket.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M16 10a4 4 0 01-8 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        장바구니
+        <span class="count {$basket_count_display|display} {$basket_count_class}">
+          <span class="{$basket_count_class}">
+            {$basket_count}
+          </span>
+        </span>
+      </a>
+    </li>
+    <!-- 마이페이지 -->
+    <li>
+      <a href="/myshop/index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img">
+          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+          <path d="M5.5 21a6.5 6.5 0 0113 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        마이페이지
+      </a>
+    </li>
+  </ul>
+  <div class="bottom-nav__top">
+    <a href="#wrap" title="화면 최상단으로 이동하기">
+      <!--@import(/svg/icon-quick-arrow.html)-->
+    </a>
+  </div>
+</div>
+<div class="footer_margin" data-ez="module-1ud8frp-1" data-ez-module="user-defined/1" data-ez-name="USER DEFINED" data-ez-type="plain"></div>
+<footer class="layout1" data-ez="contents-0kse7yg-1" data-ez-layout="layout1" id="footer">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.layout.footer.layout" data-prop="layout" data-type="array">
+<ez-item data-id="layout1" data-name="기본형"></ez-item>
+<ez-item data-id="layout2" data-name="좌우반전형"></ez-item>
+<ez-item data-id="layout3" data-name="중앙형"></ez-item>
+</ez-var>
+</ez-prop>
+<div class="inner" module="Layout_footer">
+<div class="bt_logo" module="Layout_LogoBottom"><a href="/"><img src="{$logo}" alt="{$mall_name}"></a></div><!-- //bt_logo -->
+<div class="bt_util" data-ez-group="shortcut">
+<div data-ez-role="title" style="display:none;">바로가기</div>
+<ul data-ez-role="list">
+<li data-ez-item="company"><a href="/shopinfo/company.html">회사소개</a></li>
+<li data-ez-item="agreement"><a href="/member/mall_agreement.html">이용약관</a></li>
+<li data-ez-item="privacy"><a href="/member/privacy.html"><strong>개인정보처리방침</strong></a></li>
+<li data-ez-item="guide"><a href="/shopinfo/guide.html">이용안내</a></li><li data-ez-item="faq"><a href="/board/board/3">자주묻는질문(FAQ)</a></li>
+</ul>
+</div><!-- //bt_util -->
+<div class="bt_wrap">
+<div class="bt_info" data-ez-group="info">
+<div class="title" data-ez-role="title">쇼핑몰 기본정보</div>
+<div class="bt_info_list" data-ez-role="list">
+<div data-ez-item="company_name"><span data-ez-role="field">상호명</span> <span data-ez-role="value">{$company_name}</span></div>
+<div data-ez-item="president_name"><span data-ez-role="field">대표자명</span> <span data-ez-role="value">{$president_name}</span></div>
+<div data-ez-item="address"><span data-ez-role="field">사업장 주소</span> <span data-ez-role="value">{$mall_zipcode} {$mall_addr1} {$mall_addr2}</span></div>
+<div data-ez-item="phone"><span data-ez-role="field">대표 전화</span> <span data-ez-role="value">{$phone}</span></div>
+<div data-ez-item="company_regno"><span data-ez-role="field">사업자 등록번호</span> <span data-ez-role="value">{$company_regno}</span></div>
+<div data-ez-item="network_regno"><span data-ez-role="field">통신판매업 신고번호</span> <span data-ez-role="value">{$network_regno} {$biz_no_link}</span></div>
+<div data-ez-item="cpo_name"><span data-ez-role="field">개인정보보호책임자</span> <span data-ez-role="value">{$cpo_name}</span></div>
+</div><!-- //bt_info_list -->
+</div><!-- //bt_info -->
+<div class="bt_cscenter" data-ez-group="cs" module="Layout_Info">
+<div class="title" data-ez-role="title">고객센터 정보</div>
+<div data-ez-role="list">
+<div class="bt_txt01" data-ez-item="phone"><strong>상담/주문 전화</strong><span class="pdr10"></span><span data-ez-role="value">{$phone}</span></div>
+<div class="bt_txt02" data-ez-item="email"><strong>상담/주문 이메일</strong><span data-ez-role="value">{$inquiry_email}</span></div>
+<div class="bt_txt02" data-ez-item="runtime"><strong>CS운영시간</strong><span data-ez-role="value">{$runtime}</span></div>
+</div>
+</div><!-- //bt_cscenter -->
+<div class="bt_bank" data-ez-group="bank">
+<div class="title" data-ez-role="title">결제정보</div>
+<div class="title_sub"><strong>무통장 계좌정보</strong></div>
+<div class="bt_txt02">
+<ul data-ez-role="list"><li data-ez-role="item">
+<span data-ez-role="bank_name">기업은행</span> <span class="pdr10"></span>
+<span data-ez-role="account_number">95505131204019</span><span class="pdr10"></span>
+<span data-ez-role="account_name">이정애지티컴퍼니</span>
+</li></ul>
+</div><!-- //bt_txt02 -->
+</div><!-- //bt_bank -->
+</div><!-- //bt_wrap -->
+<div class="bt_escrow" data-ez-escrow style="display:none;"><!-- 구매안전서비스 배너 -->
+<a data-ez-link="#link" href="#">
+<img alt="올앳" class="bt_ew_allat" data-ez-escrow-id="allat" src="/SkinImg/img/bt_ew_allat.png">
+<img alt="이니시스" class="bt_ew_iniapy" data-ez-escrow-id="inicis" src="/SkinImg/img/bt_ew_iniapy.png">
+<img alt="NHN한국사이버결제" class="bt_ew_kcp" data-ez-escrow-id="kcp" src="/SkinImg/img/bt_ew_kcp.png">
+<img alt="한국정보통신" class="bt_ew_kicc" data-ez-escrow-id="kicc" src="/SkinImg/img/bt_ew_kicc.png">
+<img alt="케이에스넷" class="bt_ew_ksnet" data-ez-escrow-id="ksnet" src="/SkinImg/img/bt_ew_ksnet.png">
+<img alt="나이스페이먼츠" class="bt_ew_nice" data-ez-escrow-id="nicepay" src="/SkinImg/img/bt_ew_nice.png">
+<img alt="토스페이먼츠" class="bt_ew_payments" data-ez-escrow-id="dacom" src="/SkinImg/img/bt_ew_payments.png">
+<img alt="세틀뱅크" class="bt_ew_settle" data-ez-escrow-id="settlebank" src="/SkinImg/img/bt_ew_settle.png">
+<img alt="스마트로" class="bt_ew_smartro" data-ez-escrow-id="smartro" src="/SkinImg/img/bt_ew_smartro.png">
+<span>고객님은 안전거래를 위해 결제시 저희 쇼핑몰에서 가입한 구매안전 서비스를 이용하실 수 있습니다. [서비스가입정보확인]</span>
+</a>
+</div><!-- //bt_escrow -->
+</div></footer>
+<!--#ez="1/2"-->

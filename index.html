@@ -1,0 +1,339 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+<div id="mimis-main" data-ez="contents-131x3lc-1" data-ez-display="visible" style>
+
+  <!-- ===== Pinterest 스타일 히어로 배너 ===== -->
+  <section id="ptHero" class="pt-hero">
+    <div class="pt-hero__inner">
+      <h2 class="pt-hero__headline">오늘은 어떤 떡으로<br>하루를 채울까요?</h2>
+
+      <div class="pt-hero__dots" aria-label="hero dots">
+        <button class="dot is-active" data-set="0" type="button" aria-label="slide 1"></button>
+        <button class="dot" data-set="1" type="button" aria-label="slide 2"></button>
+        <button class="dot" data-set="2" type="button" aria-label="slide 3"></button>
+        <button class="dot" data-set="3" type="button" aria-label="slide 4"></button>
+      </div>
+    </div>
+
+    <div class="pt-hero__stage">
+      <div id="ptGrid" class="pt-grid"></div>
+    </div>
+  </section>
+  <!-- ===== /Pinterest 스타일 히어로 배너 ===== -->
+
+  <!-- ===== 기존 Swiper 히어로 배너 제거됨 (Pinterest 배너로 대체) ===== -->
+
+  <!-- =========================
+       카테고리 아이콘 섹션
+       ========================= -->
+  <section class="category-icon-section">
+    <div class="category-icons">
+      <a href="/product/list.html?cate_no=46" class="category-icon active">
+        <div class="icon-circle"><span class="icon-text">🍡</span></div>
+        <span>전체상품</span>
+      </a>
+      <a href="/product/list.html?cate_no=42" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">💗</span></div>
+        <span>앙금떡</span>
+      </a>
+      <a href="/product/list.html?cate_no=43" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">🏮</span></div>
+        <span>전통떡</span>
+      </a>
+      <a href="/product/list.html?cate_no=54" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">✨</span></div>
+        <span>디저트떡</span>
+      </a>
+      <a href="/product/list.html?cate_no=44" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">🎁</span></div>
+        <span>선물세트</span>
+      </a>
+      <a href="/product/list.html?cate_no=45" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">💚</span></div>
+        <span>기능·저당</span>
+      </a>
+      <a href="/product/list.html?cate_no=57" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">1️⃣</span></div>
+        <span>1+1 특가</span>
+      </a>
+      <a href="/product/list.html?cate_no=60" class="category-icon">
+        <div class="icon-circle"><span class="icon-text">🎉</span></div>
+        <span>이벤트</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================
+       오늘만 판매특가 (product_listmain_1)
+       ========================= -->
+  
+  <section class="flash-sale-section"> 
+     <div class="section-header">
+      <h2>오늘만 판매특가 ⚡</h2>
+      <p class="section-subtitle">오늘 하루, 인기 떡을 특별한 가격으로 만나보세요.</p>
+    </div>    
+      
+    <div data-ez-holder="product_listmain_1">
+      <div module="product_listmain_1" class="ec-base-product">
+        <!--
+          $count = 12
+          $basket_result = /product/add_basket.html
+          $basket_option = /product/basket_option.html
+          $moreview = yes
+          $cache = yes
+        -->
+        <ul class="prdList grid3">
+          <!--@import(/product/list_product.html)-->
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-more">
+      <a href="/product/list.html?cate_no=58" class="btn-more">오늘만 특가 상품 더보기 →</a>
+    </div>
+  </section>
+
+  <!-- =========================
+       프로모션 배너 섹션
+       ========================= -->
+  <section class="promo-banner-section">
+    <div class="promo-grid">
+      <a href="/product/list.html?cate_no=65" class="promo-card promo-card-orange">
+        <div class="promo-content">
+          <h3>미미스 떡 골라담기</h3>
+          <p>디저트떡부터 전통 인절미까지, 원하는 떡만 쏙쏙 골라 담아보세요.</p>
+        </div>
+        <div class="promo-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/choice.jpg" alt="미미스 떡 골라담기">
+        </div>
+      </a>
+      <a href="/board/이용안내-faq/3/" class="promo-card promo-card-dark">
+        <div class="promo-content">
+          <h3>첫 구매 웰컴 쿠폰</h3>
+          <p>회원가입만 해도 바로 사용 가능한 미미스상회 전용 할인 쿠폰 지급.</p>
+        </div>
+        <div class="promo-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/coupon.jpg" alt="웰컴 쿠폰 프로모션">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================
+       미미스상회 레시피 그대로
+       ================================ -->
+  <section class="recipe-section">
+    <div class="section-header">
+      <h2>미미스상회 레시피 그대로</h2>
+      <p class="section-subtitle">레시피 따라 즐기면 더 맛있어요!</p>
+    </div>
+
+    <!-- 상단 4개 레시피 소개 -->
+    <div class="recipe-grid">
+      <!-- 1. 인절미 파르페 -->
+      <div class="recipe-card">
+        <div class="recipe-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/recipe_01.jpg" alt="인절미 파르페">
+        </div>
+        <h3>인절미 파르페</h3>
+        <p>인절미 파르페는 서양식 디저트인 파르페에 한국의 전통 식재료인 인절미(콩가루 묻힌 떡)와 팥을 결합한 퓨전 디저트입니다.</p>
+      </div>
+
+      <!-- 2. 시루떡 와플 -->
+      <div class="recipe-card">
+        <div class="recipe-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/recipe_03.jpg" alt="겉바속쫄의 끝판왕: 시루떡 와플">
+        </div>
+        <h3>겉바속쫄의 끝판왕: 시루떡 와플 (강추 ⭐)</h3>
+        <p>와플 기계가 있다면 꼭 해보셔야 합니다. 팥고물이 눌리면서 누룽지처럼 바삭해지는 식감이 예술입니다.</p>
+      </div>
+
+      <!-- 3. 약밥 버터 샌드 -->
+      <div class="recipe-card">
+        <div class="recipe-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/recipe_02.jpg" alt="단짠단짠의 정석: 약밥 버터 샌드">
+        </div>
+        <h3>단짠단짠의 정석: 약밥 버터 샌드 (앙버터 스타일)</h3>
+        <p>팥앙금 대신 약식 자체가 달콤하기 때문에, 차가운 버터만 더해도 훌륭한 단짠 디저트가 됩니다.</p>
+      </div>
+
+      <!-- 4. 버터 구이 찹쌀떡 -->
+      <div class="recipe-card">
+        <div class="recipe-image">
+          <img src="https://ecimg.cafe24img.com/pg2163b11650358008/gtcompany1004/web/upload/recipe_04.jpg" alt="겉바속쫄의 정석: 버터 구이 찹쌀떡">
+        </div>
+        <h3>겉바속쫄의 정석: 버터 구이 찹쌀떡 (강추 ⭐)</h3>
+        <p>찹쌀떡을 팬에 구우면 겉은 누룽지처럼 바삭해지고, 속의 팥앙금은 뜨겁게 녹아 흘러내립니다.</p>
+      </div>
+    </div>
+
+    <!-- product_listmain_3 : 레시피와 어울리는 상품 리스트 -->
+    <div class="recipe-products" data-ez-holder="product_listmain_3">
+      <div module="product_listmain_3" class="ec-base-product">
+        <!--
+          $count = 12
+          $basket_result = /product/add_basket.html
+          $basket_option = /product/basket_option.html
+          $moreview = yes
+          $cache = yes
+        -->
+        <ul class="prdList grid4">
+          <!--@import(/product/list_product.html)-->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       단골들이 먼저 찾는 떡 (product_listmain_2)
+       ========================= -->
+  <section class="recommend-section">
+    <div class="section-header">
+      <h2>단골들이 먼저 찾는 떡 🔥</h2>
+      <p class="section-subtitle">수많은 재구매 후기가 증명하는 미미스상회 베스트 PICK!</p>
+    </div>
+
+    <div data-ez-holder="product_listmain_2">
+      <div module="product_listmain_2" class="ec-base-product">
+        <!--
+          $count = 12
+          $basket_result = /product/add_basket.html
+          $basket_option = /product/basket_option.html
+          $moreview = yes
+          $cache = yes
+        -->
+        <ul class="prdList grid3">
+          <!--@import(/product/list_product.html)-->
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-more">
+      <a href="/product/list.html?cate_no=55" class="btn-more">추천 떡 더보기 →</a>
+    </div>
+  </section>
+
+  <!-- =========================
+       카테고리별 인기 TOP4 섹션
+       ========================= -->
+  <section class="top20-section">
+    <div class="section-header">
+      <h2>카테고리별 인기 TOP4</h2>
+      <p class="section-subtitle">최근 1개월간 가장 많이 판매된 인기 떡 모음.</p>
+    </div>
+
+    <!-- 탭 버튼 -->
+    <div class="category-tabs">
+      <button class="tab-btn active" data-tab="all">전체</button>
+      <button class="tab-btn" data-tab="anggeum">앙금떡</button>
+      <button class="tab-btn" data-tab="traditional">전통떡</button>
+      <button class="tab-btn" data-tab="dessert">디저트떡</button>
+      <button class="tab-btn" data-tab="gift">선물세트</button>
+    </div>
+
+    <!-- 패널들 -->
+    <div class="top20-panels">
+      <!-- 전체상품 TOP4 -->
+      <div class="top20-panel is-active" data-tab-panel="all">
+        <div module="product_listnormal" class="ec-base-product top20-wrap">
+          <!--
+            $cate_no = 46
+            $count = 4
+            $moreview = no
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $cache = yes
+          -->
+          <ul class="prdList top20-list">
+            <!--@import(/product/list_product.html)-->
+          </ul>
+        </div>
+        <div class="section-more">
+          <a href="/product/list.html?cate_no=46" class="btn-more">전체상품 더보기 →</a>
+        </div>
+      </div>
+
+      <!-- 앙금떡 TOP4 -->
+      <div class="top20-panel" data-tab-panel="anggeum">
+        <div module="product_listnormal" class="ec-base-product top20-wrap">
+          <!--
+            $cate_no = 42
+            $count = 4
+            $moreview = no
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $cache = yes
+          -->
+          <ul class="prdList top20-list">
+            <!--@import(/product/list_product.html)-->
+          </ul>
+        </div>
+        <div class="section-more">
+          <a href="/product/list.html?cate_no=42" class="btn-more">앙금떡 전체 보기 →</a>
+        </div>
+      </div>
+
+      <!-- 전통떡 TOP4 -->
+      <div class="top20-panel" data-tab-panel="traditional">
+        <div module="product_listnormal" class="ec-base-product top20-wrap">
+          <!--
+            $cate_no = 43
+            $count = 4
+            $moreview = no
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $cache = yes
+          -->
+          <ul class="prdList top20-list">
+            <!--@import(/product/list_product.html)-->
+          </ul>
+        </div>
+        <div class="section-more">
+          <a href="/product/list.html?cate_no=43" class="btn-more">전통떡 전체 보기 →</a>
+        </div>
+      </div>
+
+      <!-- 디저트떡 TOP4 -->
+      <div class="top20-panel" data-tab-panel="dessert">
+        <div module="product_listnormal" class="ec-base-product top20-wrap">
+          <!--
+            $cate_no = 54
+            $count = 4
+            $moreview = no
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $cache = yes
+          -->
+          <ul class="prdList top20-list">
+            <!--@import(/product/list_product.html)-->
+          </ul>
+        </div>
+        <div class="section-more">
+          <a href="/product/list.html?cate_no=54" class="btn-more">디저트떡 전체 보기 →</a>
+        </div>
+      </div>
+
+      <!-- 선물세트 TOP4 -->
+      <div class="top20-panel" data-tab-panel="gift">
+        <div module="product_listnormal" class="ec-base-product top20-wrap">
+          <!--
+            $cate_no = 44
+            $count = 4
+            $moreview = no
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $cache = yes
+          -->
+          <ul class="prdList top20-list">
+            <!--@import(/product/list_product.html)-->
+          </ul>
+        </div>
+        <div class="section-more">
+          <a href="/product/list.html?cate_no=44" class="btn-more">선물세트 전체 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--#ez="1/2"-->

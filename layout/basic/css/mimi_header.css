@@ -1,0 +1,596 @@
+/* =========================================================
+   미미스상회 커스텀 헤더 CSS - 새로 정리본
+========================================================= */
+
+/* =========================
+   공통 / 기본
+========================= */
+
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+/* 아이콘 공통 */
+.mimi-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mimi-icons a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #111;
+}
+
+.mimi-icons a svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mimi-icons .count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: #ff4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 모바일 메뉴 탭 (로고 아래) */
+.mimi-mobile-menu {
+  padding: 0 16px 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mimi-mobile-menu ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+}
+
+.mimi-mobile-menu li {
+  flex: 1;
+  text-align: center;
+}
+
+.mimi-mobile-menu a {
+  display: block;
+  padding: 8px 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mimi-mobile-menu a:hover {
+  color: #666;
+}
+
+/* =========================
+   모바일 기본 레이아웃 (max-width: 767px)
+========================= */
+
+.mimi-header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+/* 모바일 햄버거 */
+.mimi-mobile-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mimi-mobile-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #111;
+  transition: all 0.3s;
+}
+
+/* 모바일 햄버거 ON → 오렌지 + X자 */
+.mimi-mobile-hamburger.is-open span {
+  background: #ff7a00 !important;
+}
+
+.mimi-mobile-hamburger.is-open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.mimi-mobile-hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mimi-mobile-hamburger.is-open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* 로고 (모바일에서는 가운데) */
+.mimi-logo {
+  flex: 1;
+  text-align: center;
+}
+
+.mimi-logo img {
+  max-height: 32px;
+  vertical-align: middle;
+}
+
+/* 우측 영역 */
+.mimi-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 모바일에서는 상단 유틸 숨김 */
+.mimi-header-util {
+  display: none;
+}
+
+/* =========================
+   메가메뉴 (햄버거 펼침)
+   - 기본: 전체 화면 오버레이 (모바일 기준)
+========================= */
+
+.mimi-megamenu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 9998;
+  display: none !important;
+}
+
+.mimi-megamenu.is-open {
+  display: block !important;
+}
+
+.mimi-megamenu-inner {
+  position: relative;
+  max-width: 360px;
+  height: calc(100vh - 80px);
+  margin: 80px auto 40px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 24px 28px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  overflow-y: auto;
+  text-align: left;
+}
+
+/* 메가메뉴 상단 헤더 (닫기 버튼) */
+.mimi-megamenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.mimi-megamenu-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mimi-close-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.mimi-close-icon::before,
+.mimi-close-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #111;
+}
+
+.mimi-close-icon::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.mimi-close-icon::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* 메가메뉴 카테고리 그리드 */
+.mimi-megamenu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.mimi-megamenu-col h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #111;
+}
+
+.mimi-megamenu-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mimi-megamenu-col li {
+  margin-bottom: 6px;
+}
+
+.mimi-megamenu-col a {
+  display: block;
+  padding: 4px 0;
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+}
+
+.mimi-megamenu-col a:hover {
+  color: #111;
+}
+
+/* =========================
+   검색 오버레이
+========================= */
+
+.mimi-search-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none !important;
+}
+
+.mimi-search-layer.is-open {
+  display: block !important;
+}
+
+.mimi-search-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.mimi-search-box {
+  position: relative;
+  max-width: 640px;
+  margin: 120px auto 0;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+.mimi-search-box fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mimi-search-box legend {
+  position: absolute;
+  left: -9999px;
+}
+
+#mimiSearchKeyword {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 15px;
+  outline: none;
+}
+
+#mimiSearchKeyword:focus {
+  border-color: #111;
+}
+
+.mimi-search-submit {
+  position: absolute;
+  right: 36px;
+  top: 34px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #111;
+}
+
+.mimi-search-close {
+  margin-top: 12px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* =========================
+   PC 레이아웃 (min-width: 768px)
+========================= */
+
+@media screen and (min-width: 768px) {
+
+  /* 첫 줄 : 로고(좌측) + 회원가입~고객센터(우측) */
+  .mimi-header-main {
+    width: 100%;
+    padding: 16px 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  /* 모바일 햄버거는 PC에서 숨김 */
+  .mimi-mobile-hamburger {
+    display: none !important;
+  }
+
+  /* 로고 좌측 정렬 */
+  .mimi-logo {
+    flex: 0 0 auto;
+    text-align: left;
+  }
+
+  .mimi-logo img {
+    max-height: 40px;
+  }
+
+  /* 우측 : 회원가입~고객센터 */
+  .mimi-header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .mimi-header-util {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .mimi-header-util a {
+    color: #666;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .mimi-header-util a:hover {
+    color: #111;
+  }
+
+  .mimi-header-util-board {
+    position: relative;
+  }
+
+  .mimi-header-util-board > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mimi-header-util-board ul {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 120px;
+    display: none !important;
+    z-index: 10;
+  }
+
+  .mimi-header-util-board:hover ul {
+    display: block !important;
+  }
+
+  .mimi-header-util-board ul li a {
+    display: block;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #666;
+  }
+
+  .mimi-header-util-board ul li a:hover {
+    background: #f7f7f7;
+    color: #111;
+  }
+
+  /* 첫 줄 아이콘은 PC에서 숨김 (둘째 줄에서만 사용) */
+  .mimi-header-main .mimi-icons {
+    display: none !important;
+  }
+
+  /* 모바일 메뉴 탭 숨김 */
+  .mimi-mobile-menu {
+    display: none !important;
+  }
+
+  .mimi-icons {
+    gap: 16px;
+  }
+
+  .mimi-icons a {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* 두 번째 줄 : 카테고리 메뉴 + 우측 아이콘 */
+  .mimi-pc-nav {
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    padding: 12px 40px;
+    margin: 0;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .mimi-pc-nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .mimi-pc-nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .mimi-pc-hamburger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .mimi-hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 20px;
+  }
+
+  .mimi-hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #111;
+    transition: all 0.3s;
+  }
+
+  /* PC 햄버거 ON → 오렌지 + X자 */
+  .mimi-pc-hamburger.is-open .mimi-hamburger-icon span {
+    background: #ff7a00 !important;
+  }
+
+  .mimi-pc-hamburger.is-open .mimi-hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
+  }
+
+  .mimi-pc-hamburger.is-open .mimi-hamburger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mimi-pc-hamburger.is-open .mimi-hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-6px);
+  }
+
+  .mimi-hamburger-text {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .mimi-pc-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mimi-pc-menu li a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .mimi-pc-menu li a:hover {
+    color: #666;
+  }
+
+  /* 메가메뉴: PC에서는 헤더 바로 아래 가로 드롭다운 */
+  .mimi-megamenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  }
+
+  .mimi-megamenu-inner {
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 28px 40px 32px;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  /* PC에서는 닫기 헤더 숨김 (햄버거 다시 누르면 닫힘) */
+  .mimi-megamenu-header {
+    display: none !important;
+  }
+
+  .mimi-megamenu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px 40px;
+  }
+
+}

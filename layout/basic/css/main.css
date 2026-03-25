@@ -1,0 +1,1807 @@
+/* MIMIS 메인 페이지 스타일 (리디자인 + 히어로 오버레이 버전) */
+
+/* =========================
+   전역 설정
+   ========================= */
+#mimis-main {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.6;
+}
+
+#mimis-main * {
+    box-sizing: border-box;
+}
+
+/* 공통 섹션 타이틀 */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #111;
+    margin: 0 0 14px 0;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FF6B00;
+    margin: 0;
+}
+
+/* ===== Pinterest 스타일 히어로 배너 (Scoped) ===== */
+#ptHero{
+  --pt-max: 1260px;
+  --pt-gap: 12px;           /* ✅ 배너 간 여백(원하면 10px로 바꿔도 됨) */
+  --pt-col-w: 190px;        /* 카드 폭 */
+  --pt-h-single: 280px;     /* 1장짜리(단독 컬럼) 높이 */
+  --pt-h-double: 180px;     /* 2장짜리(2단 컬럼) 각 카드 높이 */
+  --pt-radius: 28px;
+  --pt-shadow: 0 14px 28px rgba(0,0,0,.08);
+  --pt-title: #C48A00;      /* 타이틀 컬러 */
+
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  padding: 44px 0 20px;
+}
+
+#ptHero *{ box-sizing: border-box; }
+
+#ptHero .pt-hero__inner{
+  max-width: var(--pt-max);
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+#ptHero .pt-hero__headline{
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--pt-title);
+  font-size: clamp(28px, 4vw, 64px);
+  line-height: 1.05;
+}
+
+#ptHero .pt-hero__dots{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+#ptHero .pt-hero__dots .dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(0,0,0,.14);
+  cursor: pointer;
+}
+#ptHero .pt-hero__dots .dot.is-active{ background: var(--pt-title); }
+
+#ptHero .pt-hero__stage{
+  position: relative;
+  max-width: var(--pt-max);
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 380px;
+  margin-top: -60px;
+}
+
+/* 페이드 마스크 제거 */
+
+/* ✅ 그리드는 "7컬럼(2,2,1,1,1,2,2)"을 겹침 없이 배치 */
+#ptHero .pt-grid{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--pt-gap);
+  align-items: flex-end;
+}
+
+
+
+#ptHero .pt-col{
+  width: var(--pt-col-w);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pt-gap);
+}
+
+/* 가장자리 컬럼 살짝 페이드 (제거됨) - 더 이상 사용 안 함 */
+#ptHero .pt-col.is-edge{ opacity: 1 !important; }
+#ptHero .pt-col.is-near-edge{ opacity: 1 !important; }
+
+/* ✅ 아치 오프셋 패턴: 1(기준) 2(↓) 3(↑) 4(기준) 5(↑) 6(↓) 7(기준) */
+#ptHero .pt-col:nth-child(1){ /* 1번열: 그대로 */ }
+#ptHero .pt-col:nth-child(2){ transform: translateY(40px); } /* 2번열: 아래로 */
+#ptHero .pt-col:nth-child(3){ transform: translateY(-40px); } /* 3번열: 위로 */
+#ptHero .pt-col:nth-child(4){ /* 4번열: 그대로 */ }
+#ptHero .pt-col:nth-child(5){ transform: translateY(-40px); } /* 5번열: 위로 (3번열과 동일) */
+#ptHero .pt-col:nth-child(6){ transform: translateY(40px); } /* 6번열: 아래로 (2번열과 동일) */
+#ptHero .pt-col:nth-child(7){ /* 7번열: 그대로 */ }
+
+#ptHero .pt-card{
+  width: 100%;
+  aspect-ratio: 800 / 1040;   /* ✅ 800×1040 비율 (1:1.3 세로형) */
+  border-radius: var(--pt-radius);
+  overflow: hidden;
+  box-shadow: var(--pt-shadow);
+  background: #f5f5f5;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform .55s ease, opacity .55s ease;
+  will-change: transform, opacity;
+}
+
+#ptHero.is-on .pt-card{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#ptHero .pt-card.is-single{ /* ✅ aspect-ratio로 대체되면서 height 제거 */ }
+#ptHero .pt-card.is-double{ /* ✅ aspect-ratio로 대체되면서 height 제거 */ }
+
+#ptHero .pt-card img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;            /* ✅ hero09.jpg 같은 세로 사진도 깨지지 않게 */
+}
+
+/* ===== 모바일 추천: 2줄 가로 스크롤 (깨짐 최소, 사용성 좋음) ===== */
+@media (max-width: 768px){
+  #ptHero{
+    padding: 28px 0 14px;
+  }
+
+  #ptHero .pt-hero__stage{
+    height: auto;
+    margin-top: 20px;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  #ptHero .pt-grid{
+    position: static;
+    transform: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+    padding: 0 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #ptHero .pt-col{
+    width: auto;
+    display: contents; /* 모바일에서는 컬럼 개념 제거 */
+  }
+
+  #ptHero .pt-card{
+    width: calc(50vw - 16px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    scroll-snap-align: start;
+    border-radius: 12px;
+  }
+
+  #ptHero .pt-hero__stage::after{
+    height: 120px;
+  }
+}
+/* ===== /Pinterest 스타일 히어로 배너 (Scoped) ===== */
+
+/* =========================
+   히어로 배너 섹션 (PC용)
+   ========================= */
+.hero-banner-section {
+    width: 100%;
+    margin: 0 auto 60px;
+    position: relative;
+}
+
+/* PC: 컨테이너 : 가운데 3장 + 양옆 살짝 보이도록 */
+@media screen and (min-width: 768px) {
+  .hero-swiper {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      overflow: visible;
+      padding: 40px 0;
+  }
+}
+
+/* PC 전용 히어로 배너 스타일 */
+@media screen and (min-width: 768px) {
+  /* 슬라이드 공통 */
+  .hero-swiper .swiper-wrapper {
+      align-items: stretch;
+  }
+
+  .hero-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: none;
+      opacity: 0.35;
+      transition: opacity 0.3s ease;
+      background: transparent;
+  }
+
+  /* 가운데 3장만 불투명 */
+  .hero-swiper .swiper-slide-active,
+  .hero-swiper .swiper-slide-prev,
+  .hero-swiper .swiper-slide-next {
+      opacity: 1;
+  }
+
+  /* 배경 제거 */
+  .hero-slide-1,
+  .hero-slide-2,
+  .hero-slide-3,
+  .hero-slide-4,
+  .hero-slide-5 {
+      background: none;
+  }
+
+  /* 카드 안 실제 콘텐츠 (5:6.5 비율) */
+  .hero-content {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 5 / 6.5;
+      padding: 0;
+      border-radius: 32px;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      display: block;
+      background: #fff;
+      position: relative;
+  }
+
+  .hero-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: inherit;
+  }
+
+  /* 히어로 오버레이 텍스트 */
+  .hero-text {
+      position: absolute;
+      bottom: 30px;
+      left: 28px;
+      right: 28px;
+      text-align: left;
+      color: #fff;
+      z-index: 20;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.23);
+  }
+
+  .hero-text h3 {
+      font-size: 26px;
+      font-weight: 900;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.03em;
+  }
+
+  .hero-text p {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0;
+      opacity: 0.95;
+  }
+
+  /* 히어로 하단 그라데이션 오버레이 */
+  .hero-content::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 45%;
+      background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.58),
+          rgba(0, 0, 0, 0.22),
+          transparent
+      );
+      z-index: 10;
+  }
+}
+
+/* 페이지네이션 */
+.hero-swiper .swiper-pagination {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #ddd;
+    opacity: 1;
+    margin: 0 4px !important;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+    background: #333;
+}
+
+/* =========================
+   카테고리 아이콘 섹션
+   ========================= */
+.category-icon-section {
+    max-width: 1200px;
+    margin: 20px auto 80px;
+    padding: 0 20px;
+}
+
+.category-icons {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+}
+
+.category-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.category-icon:hover {
+    transform: translateY(-4px);
+    opacity: 0.9;
+}
+
+.icon-circle {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: #faf5f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+}
+
+.category-icon.active .icon-circle {
+    background: #FF6B00;
+    box-shadow: 0 10px 25px rgba(255, 107, 0, 0.35);
+}
+
+.icon-circle .icon-text {
+    font-size: 34px;
+}
+
+.category-icon span:not(.icon-text) {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* =========================
+   단 하루, 반짝특가 섹션
+   ========================= */
+.flash-sale-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+/* product_listmain_1 리스트를 카드 그리드로 */
+#mimis-main .flash-sale-section .ec-base-product .prdList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: calc(33.333% - 16px) !important;
+}
+
+/* 카드 공통 (product_listmain_1/2, TOP4 공통) */
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .thumbnail,
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .box,
+#mimis-main .recommend-section .ec-base-product .prdList > li .thumbnail,
+#mimis-main .recommend-section .ec-base-product .prdList > li .box,
+#mimis-main .top20-wrap .prdList > li .thumbnail,
+#mimis-main .top20-wrap .prdList > li .box {
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li:hover .thumbnail,
+#mimis-main .flash-sale-section .ec-base-product .prdList > li:hover .box,
+#mimis-main .recommend-section .ec-base-product .prdList > li:hover .thumbnail,
+#mimis-main .recommend-section .ec-base-product .prdList > li:hover .box,
+#mimis-main .top20-wrap .prdList > li:hover .thumbnail,
+#mimis-main .top20-wrap .prdList > li:hover .box {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* 이미지 공통 */
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .thumbnail a,
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .thumbnail img,
+#mimis-main .recommend-section .ec-base-product .prdList > li .thumbnail a,
+#mimis-main .recommend-section .ec-base-product .prdList > li .thumbnail img,
+#mimis-main .top20-wrap .prdList > li .thumbnail a,
+#mimis-main .top20-wrap .prdList > li .thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .thumbnail img,
+#mimis-main .recommend-section .ec-base-product .prdList > li .thumbnail img,
+#mimis-main .top20-wrap .prdList > li .thumbnail img {
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li:hover .thumbnail img,
+#mimis-main .recommend-section .ec-base-product .prdList > li:hover .thumbnail img,
+#mimis-main .top20-wrap .prdList > li:hover .thumbnail img {
+    transform: scale(1.05);
+}
+
+/* 카드 텍스트 공통 */
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .description,
+#mimis-main .recommend-section .ec-base-product .prdList > li .description,
+#mimis-main .top20-wrap .prdList > li .description {
+    padding: 13px 14px 14px;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .name,
+#mimis-main .recommend-section .ec-base-product .prdList > li .name,
+#mimis-main .top20-wrap .prdList > li .name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .name a,
+#mimis-main .recommend-section .ec-base-product .prdList > li .name a,
+#mimis-main .top20-wrap .prdList > li .name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .summary,
+#mimis-main .recommend-section .ec-base-product .prdList > li .summary,
+#mimis-main .top20-wrap .prdList > li .summary {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+#mimis-main .flash-sale-section .ec-base-product .prdList > li .price,
+#mimis-main .recommend-section .ec-base-product .prdList > li .price,
+#mimis-main .top20-wrap .prdList > li .price {
+    font-size: 14px;
+    font-weight: 900;
+    color: #111;
+}
+
+/* (직접 쓰는 카드 레이아웃이 필요할 때) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    margin-bottom: 40px;
+}
+
+/* =========================
+   더보기 버튼 공통
+   ========================= */
+.section-more {
+    text-align: center;
+    margin-top: 36px;
+}
+
+.btn-more {
+    display: inline-block;
+    padding: 15px 56px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    background: #fff;
+}
+
+.btn-more:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+/* =========================
+   프로모션 배너 섹션
+   ========================= */
+.promo-banner-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+}
+
+/* 프로모션 카드 – 부드러운 카드 + 자연스러운 효과 */
+.promo-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 32px; /* 패딩 조정 */
+    border-radius: 26px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.14);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 카드 안쪽 은은한 하이라이트 */
+.promo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.35), transparent 55%);
+    opacity: 0.8;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+/* 내용이 위로 보이도록 */
+.promo-content,
+.promo-image {
+    position: relative;
+    z-index: 1;
+}
+
+.promo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 52px rgba(0, 0, 0, 0.22);
+}
+
+.promo-card-orange {
+    background: linear-gradient(135deg, #FF9966 0%, #FF6B3D 100%);
+}
+
+.promo-card-dark {
+    background: linear-gradient(135deg, #3A3A3A 0%, #121212 100%);
+}
+
+.promo-content h3 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.03em;
+}
+
+.promo-content p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* 프로모션 이미지 – 고정 비율 + 모서리 라운드 */
+.promo-image {
+    flex-shrink: 0;
+    width: 260px;
+    aspect-ratio: 4 / 3;
+    margin-left: 26px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.promo-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.promo-card:hover .promo-image img {
+    transform: scale(1.12);
+    filter: brightness(1.05);
+}
+
+/* ================================
+   미미스상회 레시피 섹션
+   ================================ */
+#mimis-main .recipe-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 80px 20px 100px;
+    background: linear-gradient(180deg, #fff 0%, #fff7f0 100%);
+    border-radius: 32px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* 상단 4개 레시피 소개 카드 */
+#mimis-main .recipe-section .recipe-grid {
+    max-width: 1200px;
+    margin: 36px auto 46px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+#mimis-main .recipe-section .recipe-card {
+    padding: 24px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 레시피 카드 색상 배경 */
+#mimis-main .recipe-section .recipe-card:nth-child(1) {
+    background: #FFF5E6 !important;
+}
+
+#mimis-main .recipe-section .recipe-card:nth-child(2) {
+    background: #F0E6FF !important;
+}
+
+#mimis-main .recipe-section .recipe-card:nth-child(3) {
+    background: #E6F5FF !important;
+}
+
+#mimis-main .recipe-section .recipe-card:nth-child(4) {
+    background: #FFE6F0 !important;
+}
+
+#mimis-main .recipe-section .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
+}
+
+#mimis-main .recipe-section .recipe-card h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 8px 0;
+}
+
+#mimis-main .recipe-section .recipe-card p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 하단 레시피 리스트 (product_listmain_2) */
+#mimis-main .recipe-section .ec-base-product .prdList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+#mimis-main .recipe-section .ec-base-product .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: calc(25% - 18px) !important;
+}
+
+/* ================================
+   TOP20 추천 섹션
+   ================================ */
+#mimis-main .top20-wrap {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+#mimis-main .top20-wrap .prdList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+#mimis-main .top20-wrap .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: calc(25% - 18px) !important;
+}
+
+/* ================================
+   추천 섹션 (product_listmain_2)
+   ================================ */
+#mimis-main .recommend-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+#mimis-main .recommend-section .ec-base-product .prdList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+#mimis-main .recommend-section .ec-base-product .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: calc(25% - 18px) !important;
+}
+
+/* ================================
+   모바일 반응형
+   ================================ */
+@media screen and (max-width: 1024px) {
+  #mimis-main .flash-sale-section .ec-base-product .prdList > li,
+  #mimis-main .recommend-section .ec-base-product .prdList > li,
+  #mimis-main .top20-wrap .prdList > li,
+  #mimis-main .recipe-section .ec-base-product .prdList > li {
+      width: calc(50% - 12px) !important;
+  }
+
+  .promo-grid {
+      grid-template-columns: 1fr;
+  }
+
+  .promo-image {
+      display: none;
+  }
+
+  .promo-content h3 {
+      font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #mimis-main {
+      padding: 0;
+  }
+
+  .section-header h2 {
+      font-size: 26px;
+  }
+
+  .section-header {
+      margin-bottom: 32px;
+  }
+
+  .category-icon-section,
+  .flash-sale-section,
+  .recommend-section,
+  .top20-wrap,
+  .promo-banner-section {
+      margin-bottom: 60px;
+  }
+
+  #mimis-main .flash-sale-section .ec-base-product .prdList > li,
+  #mimis-main .recommend-section .ec-base-product .prdList > li,
+  #mimis-main .top20-wrap .prdList > li,
+  #mimis-main .recipe-section .ec-base-product .prdList > li {
+      width: calc(50% - 12px) !important;
+  }
+
+  /* recommend-section 모바일 2×2 그리드 */
+  #mimis-main .recommend-section .ec-base-product .prdList {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      flex-wrap: nowrap !important;
+  }
+
+  #mimis-main .recommend-section .ec-base-product .prdList > li {
+      width: 100% !important;
+      margin: 0 !important;
+  }
+
+
+  /* 모바일: 레시피와 제품을 분리하여 각각 2×2 그리드로 표시 */
+  #mimis-main .recipe-section {
+      display: block !important;
+  }
+
+  #mimis-main .recipe-section .section-header {
+      margin-bottom: 24px !important;
+  }
+
+  /* 레시피 그리드 - 2×2 */
+  #mimis-main .recipe-section .recipe-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      margin: 0 0 36px 0 !important;
+  }
+
+  #mimis-main .recipe-section .recipe-card {
+      padding: 16px !important;
+      border-radius: 16px !important;
+  }
+
+  /* 제품 그리드 - 2×2 */
+  #mimis-main .recipe-section .recipe-products {
+      display: block !important;
+  }
+
+  #mimis-main .recipe-section .ec-base-product {
+      display: block !important;
+  }
+
+  #mimis-main .recipe-section .ec-base-product .prdList {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      list-style: none;
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  #mimis-main .recipe-section .ec-base-product .prdList > li {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 12px !important;
+      float: none !important;
+  }
+
+
+  .category-icons {
+      gap: 20px;
+  }
+
+  #mimis-main .top20-wrap .prdList {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+  }
+
+  #mimis-main .top20-wrap .prdList > li {
+      width: 100% !important;
+  }
+
+  .icon-circle {
+      width: 72px;
+      height: 72px;
+  }
+
+  .icon-circle .icon-text {
+      font-size: 28px;
+  }
+
+  .category-icon span:not(.icon-text) {
+      font-size: 12px;
+  }
+
+  .promo-card {
+      flex-direction: column;
+      padding: 24px;
+      text-align: center;
+  }
+
+  .promo-card-orange,
+  .promo-card-dark {
+      background: linear-gradient(135deg, #FF9966 0%, #FF6B3D 100%);
+  }
+
+  .promo-card-dark {
+      background: linear-gradient(135deg, #3A3A3A 0%, #121212 100%);
+  }
+
+  .promo-content h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+  }
+
+  .promo-content p {
+      font-size: 13px;
+  }
+
+  .promo-image {
+      display: none;
+  }
+
+  #mimis-main .recipe-section {
+      padding: 50px 20px 60px;
+  }
+
+  #mimis-main .recipe-section .recipe-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+  }
+
+  #mimis-main .recipe-section .recipe-card {
+      padding: 16px;
+  }
+
+  #mimis-main .recipe-section .recipe-card h4 {
+      font-size: 16px;
+  }
+
+  #mimis-main .recipe-section .recipe-card p {
+      font-size: 12px;
+  }
+
+  .btn-more {
+      padding: 12px 40px;
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-header h2 {
+      font-size: 22px;
+  }
+
+  .section-subtitle {
+      font-size: 14px;
+  }
+
+  #mimis-main .flash-sale-section .ec-base-product .prdList > li,
+  #mimis-main .recommend-section .ec-base-product .prdList > li,
+  #mimis-main .top20-wrap .prdList > li,
+  #mimis-main .recipe-section .ec-base-product .prdList > li {
+      width: 100% !important;
+  }
+
+  .category-icons {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 6px !important;
+      max-width: 100% !important;
+      flex-wrap: nowrap !important;
+  }
+
+  .category-icon {
+      flex: 0 0 calc(25% - 9px) !important;
+      width: auto !important;
+  }
+
+  .icon-circle {
+      width: 64px !important;
+      height: 64px !important;
+  }
+
+  .icon-circle .icon-text {
+      font-size: 24px;
+  }
+
+  .category-icon span:not(.icon-text) {
+      font-size: 11px;
+  }
+
+  .promo-card {
+      padding: 20px;
+  }
+
+  .promo-content h3 {
+      font-size: 18px;
+  }
+
+  .promo-content p {
+      font-size: 12px;
+  }
+
+  #mimis-main .recipe-section {
+      padding: 40px 16px 50px;
+  }
+
+  #mimis-main .recipe-section .recipe-grid {
+      grid-template-columns: 1fr;
+  }
+
+  #mimis-main .recipe-section .recipe-card {
+      padding: 14px;
+  }
+
+  #mimis-main .recipe-section .recipe-card h4 {
+      font-size: 14px;
+  }
+
+  #mimis-main .recipe-section .recipe-card p {
+      font-size: 11px;
+  }
+}
+
+/* 모바일 히어로 배너 */
+@media screen and (max-width: 768px) {
+  .hero-banner-section {
+      margin-bottom: 40px;
+  }
+
+  .hero-swiper {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      overflow: visible;
+      padding: 20px 0;
+  }
+
+  .hero-swiper .swiper-wrapper {
+      align-items: center;
+  }
+
+  .hero-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      background: transparent;
+  }
+
+  .hero-content {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 5 / 6.5;
+      padding: 0 16px;
+      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: block;
+      background: #fff;
+      position: relative;
+  }
+
+  .hero-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: inherit;
+  }
+
+  /* 모바일: 텍스트 오버레이 */
+  .hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    text-align: left;
+    color: #fff;
+    z-index: 20;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-text p {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.9;
+  }
+}
+
+
+/* =========================
+   단골들이 먼저 찾는 떡 섹션 (3X1 그리드)
+   ========================= */
+.best-pick-section {
+    max-width: 1400px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+.best-pick-section .section-header {
+    margin-bottom: 60px;
+}
+
+.best-pick-section .section-header h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    margin: 0 0 16px 0;
+}
+
+.best-pick-section .section-header .section-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FF6B00;
+}
+
+/* 3X1 그리드 레이아웃 */
+.best-pick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 50px;
+}
+
+.best-pick-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.best-pick-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.best-pick-card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.best-pick-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.best-pick-card:hover .best-pick-card-image img {
+    transform: scale(1.08);
+}
+
+.best-pick-card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.best-pick-card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+.best-pick-card-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.best-pick-card-price {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin: 0;
+}
+
+/* 더보기 버튼 */
+.best-pick-button-wrap {
+    text-align: center;
+}
+
+.best-pick-more-btn {
+    display: inline-block;
+    padding: 14px 48px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    background: #fff;
+    color: #111;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.best-pick-more-btn:hover {
+    border-color: #FF6B00;
+    color: #FF6B00;
+    background: #fff9f5;
+}
+
+/* 모바일 반응형 (1열) */
+@media (max-width: 768px) {
+    .best-pick-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .best-pick-section .section-header h2 {
+        font-size: 28px;
+    }
+
+    .best-pick-card-content {
+        padding: 16px;
+    }
+
+    .best-pick-card-title {
+        font-size: 14px;
+    }
+
+    .best-pick-card-desc {
+        font-size: 12px;
+    }
+
+    .best-pick-card-price {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================
+   단골들이 먼저 찾는 떡 섹션 (bestseller-section - 3X1 그리드)
+   ========================= */
+#mimis-main .bestseller-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+#mimis-main .bestseller-section .section-header {
+    margin-bottom: 60px;
+}
+
+#mimis-main .bestseller-section .section-header h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    margin: 0 0 16px 0;
+}
+
+#mimis-main .bestseller-section .section-header .section-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FF6B00;
+}
+
+/* 3X1 그리드 레이아웃 */
+#mimis-main .bestseller-section .ec-base-product .prdList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 50px;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .thumbnail,
+#mimis-main .bestseller-section .ec-base-product .prdList > li .box {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li:hover .thumbnail,
+#mimis-main .bestseller-section .ec-base-product .prdList > li:hover .box {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .thumbnail {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li:hover .thumbnail img {
+    transform: scale(1.08);
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .description {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .summary {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+#mimis-main .bestseller-section .ec-base-product .prdList > li .price {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin: 0;
+}
+
+/* 더보기 버튼 */
+#mimis-main .bestseller-section .section-more {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#mimis-main .bestseller-section .btn-more {
+    display: inline-block;
+    padding: 14px 48px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    background: #fff;
+    color: #111;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#mimis-main .bestseller-section .btn-more:hover {
+    border-color: #FF6B00;
+    color: #FF6B00;
+    background: #fff9f5;
+}
+
+/* 모바일 반응형 (2×2 그리드) */
+@media (max-width: 768px) {
+    #mimis-main .bestseller-section .ec-base-product .prdList {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        margin-bottom: 30px !important;
+    }
+
+    #mimis-main .bestseller-section .ec-base-product .prdList > li {
+        width: 100% !important;
+    }
+
+    #mimis-main .bestseller-section .section-header h2 {
+        font-size: 28px;
+    }
+
+    #mimis-main .bestseller-section .ec-base-product .prdList > li .description {
+        padding: 16px;
+    }
+
+    #mimis-main .bestseller-section .ec-base-product .prdList > li .name {
+        font-size: 14px;
+    }
+
+    #mimis-main .bestseller-section .ec-base-product .prdList > li .summary {
+        font-size: 12px;
+    }
+
+    #mimis-main .bestseller-section .ec-base-product .prdList > li .price {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================
+   카테고리별 TOP4 탭 스타일 (현대적, 세련된)
+   ========================= */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    background: #f5f5f5;
+    color: #333;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: -0.01em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn:hover {
+    background: #efefef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn.active {
+    background: #FF6B00;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .category-tabs {
+        gap: 8px;
+        margin-bottom: 40px;
+    }
+
+    .tab-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   카테고리별 TOP4 탭 전환 애니메이션
+   ========================= */
+#mimis-main .category-top4-section .ec-base-product .prdList {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+
+/* =========================
+   카테고리별 TOP4 섹션 - 초기 상태 설정
+   ========================= */
+#mimis-main .categor.top20-section {
+    max-width: 1200px;
+    margin: 0 auto 110px;
+    padding: 0 20px;
+}
+
+.top20-section .section-more {
+    margin-top: -40px;
+}
+
+/* 기본: 첫 번째 탭(전체)만 보이도록 */
+#mimis-main .category-top4-section .ec-base-product .prdList {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mimis-main .category-top4-section .ec-base-product .prdList > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    width: calc(25% - 18px) !important;
+}
+
+/* PC: 4열 */
+@media (min-width: 1025px) {
+    #mimis-main .category-top4-section .ec-base-product .prdList > li {
+        width: calc(25% - 18px) !important;
+    }
+}
+
+/* 태블릿: 2열 */
+@media (max-width: 1024px) {
+    #mimis-main .category-top4-section .ec-base-product .prdList > li {
+        width: calc(50% - 12px) !important;
+    }
+}
+
+/* 모바일: 1열 */
+@media (max-width: 768px) {
+    #mimis-main .category-top4-section .ec-base-product .prdList > li {
+        width: 100% !important;
+    }
+}
+
+
+/* ===== Recipe Section 제품 배경색 ===== */
+.recipe-section .ec-base-product .prdList > li:nth-child(1) {
+  background: #FFF5E6;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .ec-base-product .prdList > li:nth-child(2) {
+  background: #F0E6FF;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .ec-base-product .prdList > li:nth-child(3) {
+  background: #E6F5FF;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .ec-base-product .prdList > li:nth-child(4) {
+  background: #FFE6F0;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+/* 모바일에서도 동일하게 적용 */
+@media screen and (max-width: 768px) {
+  .recipe-section .ec-base-product .prdList > li:nth-child(1) {
+    background: #FFF5E6 !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .ec-base-product .prdList > li:nth-child(2) {
+    background: #F0E6FF !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .ec-base-product .prdList > li:nth-child(3) {
+    background: #E6F5FF !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .ec-base-product .prdList > li:nth-child(4) {
+    background: #FFE6F0 !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* ===== Recipe Card 배경색 (레시피 섹션) ===== */
+.recipe-section .recipe-grid .recipe-card:nth-child(1) {
+  background: #FFF5E6;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .recipe-grid .recipe-card:nth-child(2) {
+  background: #F0E6FF;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .recipe-grid .recipe-card:nth-child(3) {
+  background: #E6F5FF;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.recipe-section .recipe-grid .recipe-card:nth-child(4) {
+  background: #FFE6F0;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+/* 모바일에서도 동일하게 적용 */
+@media screen and (max-width: 768px) {
+  .recipe-section .recipe-grid .recipe-card:nth-child(1) {
+    background: #FFF5E6 !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .recipe-grid .recipe-card:nth-child(2) {
+    background: #F0E6FF !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .recipe-grid .recipe-card:nth-child(3) {
+    background: #E6F5FF !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .recipe-section .recipe-grid .recipe-card:nth-child(4) {
+    background: #FFE6F0 !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* ===== Recipe Badge 스타일 ===== */
+.recipe-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.recipe-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.recipe-badge-1 {
+  background: #FFF5E6;
+  color: #FF6B00;
+}
+
+.recipe-badge-2 {
+  background: #F0E6FF;
+  color: #7B3FF2;
+}
+
+.recipe-badge-3 {
+  background: #E6F5FF;
+  color: #0066CC;
+}
+
+.recipe-badge-4 {
+  background: #FFE6F0;
+  color: #E91E63;
+}
+
+.recipe-label {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ===== 버튼 텍스트 한글화 ===== */
+/* BUY IT NOW 버튼 */
+.btn-buy,
+.xans-record- .btn-buy,
+button[type="submit"]:contains("BUY IT NOW") {
+  font-size: 0;
+}
+
+.btn-buy::before,
+.xans-record- .btn-buy::before,
+button[type="submit"]::before {
+  content: "지금 구매하기";
+  font-size: 16px;
+}
+
+/* CART 버튼 */
+.btn-cart,
+.xans-record- .btn-cart {
+  font-size: 0;
+}
+
+.btn-cart::before,
+.xans-record- .btn-cart::before {
+  content: "장바구니";
+  font-size: 16px;
+}
+
+/* WISH LIST 버튼 */
+.btn-wish,
+.xans-record- .btn-wish {
+  font-size: 0;
+}
+
+.btn-wish::before,
+.xans-record- .btn-wish::before {
+  content: "위시리스트";
+  font-size: 16px;
+}
+
+/* ===== 제품명 앞에 이모지 추가 ===== */
+/* 제품 1 - 주황색 원 */
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(1) h3::before {
+  content: "🟠 ";
+  margin-right: 4px;
+}
+
+/* 제품 2 - 보라색 원 */
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(2) h3::before {
+  content: "🟣 ";
+  margin-right: 4px;
+}
+
+/* 제품 3 - 파란색 원 */
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(3) h3::before {
+  content: "🔵 ";
+  margin-right: 4px;
+}
+
+/* 제품 4 - 분홍색 하트 */
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(4) h3::before {
+  content: "🩷 ";
+  margin-right: 4px;
+}
+
+/* 제품명 앞에 이모지 추가 */
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(1) h3::before {
+  content: "🟠 ";
+}
+
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(2) h3::before {
+  content: "🟣 ";
+}
+
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(3) h3::before {
+  content: "🔵 ";
+}
+
+#mimis-main .recipe-section .ec-base-product .prdList > li:nth-child(4) h3::before {
+  content: "🩷 ";
+}

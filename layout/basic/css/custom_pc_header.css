@@ -1,0 +1,27 @@
+/* =========================================================
+   PC 헤더 스크롤 시 고정 (Sticky Header)
+========================================================= */
+
+@media screen and (min-width: 768px) {
+  /* 헤더 sticky 고정 */
+  #header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 998 !important;
+    background: #fff !important;
+  }
+  
+  /* fixed 클래스가 추가되어도 sticky 유지 */
+  #header.fixed {
+    position: sticky !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+  
+  /* 스크롤 시 상단 배너 숨기기 (선택적) */
+  /* 
+  .main_top_banner {
+    display: none;
+  }
+  */
+}
