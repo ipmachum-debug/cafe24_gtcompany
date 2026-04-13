@@ -53,9 +53,10 @@
   color: #555;
   text-decoration: none;
   font-size: 14px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   position: relative;
   border-left: 3px solid transparent;
+  box-sizing: border-box;
 }
 
 .board-sidebar-menu a:hover {
@@ -343,58 +344,61 @@
   }
 }
 
-/* 고객센터 메인 – 공지/후기/FAQ/프랜차이즈 목록 앞 회색 박스 제거 */
-.board-main .xans-board-main-1001 li a span:first-child,
-.board-main .xans-board-main-1001 li a .thumbnail,
-.board-main .xans-board-main-1001 li a .thumb,
-.board-main .xans-board-main-1001 li a .imgArea {
-  display: none !important;
-  background: none !important;
-}
-
-/* 썸네일 자리 때문에 밀려 있던 텍스트를 왼쪽으로 붙이기 */
-.board-main .xans-board-main-1001 li a,
-.board-main .xans-board-main-1001 li .subject {
-  padding-left: 0 !important;
-}
-
-/* 고객센터 메인 – 공지/후기/FAQ/프랜차이즈 목록 앞 회색 박스 완전 제거 */
-[class^="xans-board-main-"] li a span:first-child,
-[class^="xans-board-main-"] li a .thumbnail,
-[class^="xans-board-main-"] li a .thumb,
-[class^="xans-board-main-"] li a .imgArea {
-  display: none !important;
-  background: none !important;
-}
-
-/* 썸네일 자리 때문에 밀려 있던 텍스트를 왼쪽으로 붙이기 */
-[class^="xans-board-main-"] li a,
-[class^="xans-board-main-"] li .subject {
-  padding-left: 0 !important;
-}
-
 /* =========================
-   고객센터 게시판 회색 썸네일 박스 제거 (skin4)
+   고객센터 메인 페이지 회색 썸네일 박스 제거
+   (개별 게시판 리스트 페이지에는 영향 없음)
    ========================= */
 
-/* 메인(index.html) 요약 리스트 앞 네모 제거 */
+/* 고객센터 메인(index.html) - 썸네일 td 숨김 */
+.boardMain .ec-base-table td.thumb {
+  display: none !important;
+  width: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* 고객센터 메인 - 리스트 앞 회색 네모(::before) 제거 */
 .boardMain .ec-base-table.typeList td.title::before {
   content: none !important;
   display: none !important;
 }
 
-/* 각 게시판(list.html) 목록에서 썸네일/회색 네모 제거 */
-[class^="xans-board-list"] td.subject .thumbnail,
-[class^="xans-board-list"] td.subject .thumb,
-[class^="xans-board-list"] td.subject .imgArea,
-[class^="xans-board-list"] td.subject .ec-board-thumbnail {
+/* 고객센터 메인 - 셀 안의 썸네일 요소 제거 */
+.boardMain .ec-base-table td.title .thumbnail,
+.boardMain .ec-base-table td.title .thumb,
+.boardMain .ec-base-table td.title .imgArea,
+.boardMain .ec-base-table td.title .ec-board-thumbnail,
+.boardMain .ec-base-table td.subject .thumbnail,
+.boardMain .ec-base-table td.subject .thumb,
+.boardMain .ec-base-table td.subject .imgArea,
+.boardMain .ec-base-table td.subject .ec-board-thumbnail {
   display: none !important;
+  width: 0 !important;
+  height: 0 !important;
   background: none !important;
 }
 
-/* 썸네일 자리가 없어지면서 남는 왼쪽 여백 제거 */
-[class^="xans-board-list"] td.subject,
-[class^="xans-board-list"] td.subject.left,
-[class^="xans-board-list"] td.subject.txtBreak {
+/* 고객센터 메인 - 체크박스 열 숨김 */
+.boardMain .ec-base-table td.chk {
+  display: none !important;
+  width: 0 !important;
+  padding: 0 !important;
+}
+
+/* 고객센터 메인 - 왼쪽 여백 제거 */
+.boardMain .ec-base-table.typeList td.title,
+.boardMain .ec-base-table.typeList td.subject {
   padding-left: 0 !important;
+}
+
+/* 고객센터 메인 - 테이블 보더 제거 */
+.boardMain .ec-base-table table {
+  border-collapse: collapse;
+  border: none !important;
+}
+
+.boardMain .ec-base-table table td,
+.boardMain .ec-base-table table th {
+  border-left: none !important;
+  border-right: none !important;
 }
